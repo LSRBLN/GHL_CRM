@@ -2,7 +2,6 @@ import httpx
 import os
 import logging
 import random
-from typing import Optional
 from models import BusinessResult
 from dotenv import load_dotenv
 from pathlib import Path
