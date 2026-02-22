@@ -341,8 +341,8 @@ const AuditReportPage = () => {
               <Users size={28} />
             </div>
             <div className="flex-1">
-              <h2 className="text-xl font-bold text-gray-900">{report.business_name}</h2>
-              <div className="flex items-center gap-1 mt-1 text-sm text-gray-500">
+              <h2 className="text-xl font-bold text-gray-900" data-testid="audit-report-business-name">{report.business_name}</h2>
+              <div className="flex items-center gap-1 mt-1 text-sm text-gray-500" data-testid="audit-report-business-address">
                 <MapPin size={13} /> {report.address}
               </div>
               {report.phone && (
