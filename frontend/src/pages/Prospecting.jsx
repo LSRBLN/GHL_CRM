@@ -514,7 +514,9 @@ const Prospecting = () => {
                         </div>
                       </td>
                       <td className="px-4 py-4">
-                        <OnlinePresenceIcons presence={biz.onlinePresence} />
+                        <div data-testid={`prospecting-online-presence-${biz.id}`}>
+                          <OnlinePresenceIcons presence={biz.onlinePresence} />
+                        </div>
                       </td>
                       <td className="px-4 py-4">
                         <div className="flex items-center gap-1.5">
