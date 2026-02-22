@@ -120,12 +120,15 @@ const OnlinePresenceIcons = ({ presence }) => (
 );
 
 const Prospecting = () => {
+  const navigate = useNavigate();
   const [searchTerm, setSearchTerm] = useState('gastro');
   const [location, setLocation] = useState('Wedding, Wedding, 13 Berlin, Deutschland');
   const [radius, setRadius] = useState('5');
   const [selectedRows, setSelectedRows] = useState([]);
-  const [hasSearched, setHasSearched] = useState(true);
-  const [businesses, setBusinesses] = useState(prospectingResults);
+  const [hasSearched, setHasSearched] = useState(false);
+  const [businesses, setBusinesses] = useState([]);
+  const [loading, setLoading] = useState(false);
+  const [savedLeads, setSavedLeads] = useState(new Set());
 
   const toggleRow = (id) => {
     setSelectedRows((prev) =>
