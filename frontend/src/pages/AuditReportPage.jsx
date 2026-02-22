@@ -478,7 +478,11 @@ const AuditReportPage = () => {
                   { label: 'Öffnungszeiten', value: report.google_profile.details.hours ? 'Vorhanden' : 'Fehlt', ok: report.google_profile.details.hours },
                   { label: 'Beschreibung', value: report.google_profile.details.description ? 'Vorhanden' : 'Fehlt', ok: report.google_profile.details.description },
                 ].map((item, idx) => (
-                  <div key={idx} className={`p-3 rounded-lg border ${item.ok ? 'border-green-200 bg-green-50' : 'border-red-200 bg-red-50'}`}>
+                  <div
+                    key={idx}
+                    className={`p-3 rounded-lg border ${item.ok ? 'border-green-200 bg-green-50' : 'border-red-200 bg-red-50'}`}
+                    data-testid={`audit-report-google-detail-${idx}`}
+                  >
                     <p className="text-xs text-gray-500">{item.label}</p>
                     <p className="text-sm font-semibold text-gray-800">{item.value}</p>
                   </div>
