@@ -55,6 +55,7 @@ function App() {
             <Route path="/" element={<Dashboard />} />
             <Route path="/prospecting" element={<Prospecting />} />
             <Route path="/report" element={<AuditReportPage />} />
+            <Route path="/offer" element={<OfferPage />} />
             <Route path="/conversations" element={<Conversations />} />
             <Route path="/calendars" element={<CalendarPage />} />
             <Route path="/contacts" element={<Contacts />} />
