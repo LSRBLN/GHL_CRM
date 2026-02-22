@@ -1,14 +1,10 @@
-from fastapi import FastAPI, APIRouter
+from fastapi import FastAPI
 from dotenv import load_dotenv
 from starlette.middleware.cors import CORSMiddleware
 from motor.motor_asyncio import AsyncIOMotorClient
 import os
 import logging
 from pathlib import Path
-from pydantic import BaseModel, Field, ConfigDict
-from typing import List
-import uuid
-from datetime import datetime, timezone
 from routes_prospecting import router as prospecting_router
 
 
