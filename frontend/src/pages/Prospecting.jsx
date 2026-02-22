@@ -256,6 +256,7 @@ const Prospecting = () => {
                 onChange={(e) => setSearchTerm(e.target.value)}
                 placeholder="z.B. gastro, restaurant, friseur..."
                 className="h-10"
+                data-testid="prospecting-search-input"
               />
             </div>
 
