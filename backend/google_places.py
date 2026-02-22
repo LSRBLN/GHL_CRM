@@ -116,8 +116,11 @@ async def search_google_places(keyword: str, location: str, radius: int = 5) -> 
 
 async def _get_place_details(place_id: str) -> tuple:
     """Get phone and website from Place Details API."""
-    if not place_id or not GOOGLE_PLACES_API_KEY:
+    api_key = os.environ.get("GOOGLE_PLACES_API_KEY")
+    if not place_id:
         return None, None
+    if not api_key:
+        raise ValueError("GOOGLE_PLACES_API_KEY ist nicht konfiguriert")
 
     try:
         url = "https://maps.googleapis.com/maps/api/place/details/json"
