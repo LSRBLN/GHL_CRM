@@ -683,7 +683,7 @@ const AuditReportPage = () => {
                     </div>
                     <div className="flex items-center gap-2 text-sm">
                       <CheckCircle2 size={14} className="text-green-500" />
-                      <span className="text-gray-700">{report.website_performance.desktop_passed} Test erfolgreich</span>
+                      <span className="text-gray-700" data-testid="audit-report-desktop-passed">{report.website_performance.desktop_passed} Test erfolgreich</span>
                     </div>
                   </div>
                 </div>
