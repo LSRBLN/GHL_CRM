@@ -511,7 +511,7 @@ const AuditReportPage = () => {
                     <p className="text-lg font-bold text-amber-700">{report.listings.partial_matches}</p>
                     <p className="text-[10px] text-amber-600">Teilweise</p>
                   </div>
-                  <div className="p-2 rounded bg-red-50 border border-red-200 text-center">
+                  <div className="p-2 rounded bg-red-50 border border-red-200 text-center" data-testid="audit-report-listings-none">
                     <p className="text-lg font-bold text-red-700">{report.listings.no_matches}</p>
                     <p className="text-[10px] text-red-600">Keine</p>
                   </div>
