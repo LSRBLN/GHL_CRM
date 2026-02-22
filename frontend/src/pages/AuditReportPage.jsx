@@ -568,7 +568,7 @@ const AuditReportPage = () => {
                 <div className="grid grid-cols-2 md:grid-cols-3 gap-3">
                   <div className="p-3 rounded-lg bg-gray-50 border border-gray-200 text-center">
                     <p className="text-xs text-gray-500">Analysierte Bewertungen</p>
-                    <p className="text-xl font-bold text-gray-800">{report.reputation.total_reviews_analyzed}</p>
+                    <p className="text-xl font-bold text-gray-800" data-testid="audit-report-reputation-total-analyzed">{report.reputation.total_reviews_analyzed}</p>
                   </div>
                   <div className="p-3 rounded-lg bg-green-50 border border-green-200 text-center">
                     <p className="text-xs text-green-600">Positive</p>
