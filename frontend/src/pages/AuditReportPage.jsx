@@ -326,10 +326,10 @@ const AuditReportPage = () => {
               </p>
             </div>
             <div className="text-right text-sm text-gray-400">
-              <p className="flex items-center gap-1.5 justify-end">
+              <p className="flex items-center gap-1.5 justify-end" data-testid="audit-report-agency-phone">
                 <Phone size={12} /> {report.agency_phone}
               </p>
-              <p className="flex items-center gap-1.5 justify-end mt-1">
+              <p className="flex items-center gap-1.5 justify-end mt-1" data-testid="audit-report-agency-email">
                 <Mail size={12} /> {report.agency_email}
               </p>
             </div>
