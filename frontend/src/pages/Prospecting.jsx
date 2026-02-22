@@ -448,7 +448,7 @@ const Prospecting = () => {
                         Online-Präsenz
                         <TooltipProvider delayDuration={100}>
                           <Tooltip>
-                            <TooltipTrigger>
+                            <TooltipTrigger data-testid="prospecting-presence-tooltip">
                               <Info size={12} className="text-gray-400" />
                             </TooltipTrigger>
                             <TooltipContent>
