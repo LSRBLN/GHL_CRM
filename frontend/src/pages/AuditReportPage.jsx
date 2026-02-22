@@ -356,7 +356,7 @@ const AuditReportPage = () => {
                 </div>
               )}
             </div>
-            <ScoreCircle score={report.overall_score} size={130} label="Gesamtscore" />
+            <ScoreCircle score={report.overall_score} size={130} label="Gesamtscore" testId="audit-report-overall-score" />
           </div>
 
           {/* Score explanation */}
