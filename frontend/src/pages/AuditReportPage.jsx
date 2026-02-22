@@ -450,7 +450,7 @@ const AuditReportPage = () => {
         {expandedSections.google && (
           <CardContent className="pt-0 pb-5 px-5">
             <div className="flex items-center gap-4 mb-4">
-              <ScoreCircle score={report.google_profile.score} size={80} strokeWidth={6} />
+              <ScoreCircle score={report.google_profile.score} size={80} strokeWidth={6} testId="audit-report-google-score" />
               <div>
                 <p className="text-sm text-gray-700">
                   {report.google_profile.verified
