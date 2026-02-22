@@ -433,7 +433,7 @@ const Prospecting = () => {
                         Konversionsrate
                         <TooltipProvider delayDuration={100}>
                           <Tooltip>
-                            <TooltipTrigger>
+                            <TooltipTrigger data-testid="prospecting-conversion-tooltip">
                               <Info size={12} className="text-gray-400" />
                             </TooltipTrigger>
                             <TooltipContent>
