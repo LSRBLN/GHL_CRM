@@ -558,6 +558,7 @@ const Prospecting = () => {
                             onClick={() => handleCreateOffer(biz)}
                             className="text-xs text-green-600 hover:text-green-700 font-medium flex items-center gap-1 whitespace-nowrap transition-colors px-2 py-1 rounded hover:bg-green-50"
                             title="Angebot erstellen"
+                            data-testid={`prospecting-create-offer-${biz.id}`}
                           >
                             <FileText size={13} />
                             Angebot
