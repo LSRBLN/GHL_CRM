@@ -307,7 +307,7 @@ const AuditReportPage = () => {
             <FileText size={14} />
             Angebot erstellen
           </Button>
-          <Button size="sm" className="gap-1.5 bg-blue-600 hover:bg-blue-700">
+          <Button size="sm" className="gap-1.5 bg-blue-600 hover:bg-blue-700" data-testid="audit-report-download-button">
             <Download size={14} />
             PDF Download
           </Button>
