@@ -266,7 +266,7 @@ const Prospecting = () => {
                 Standort
                 <TooltipProvider delayDuration={100}>
                   <Tooltip>
-                    <TooltipTrigger>
+                    <TooltipTrigger data-testid="prospecting-location-tooltip">
                       <Info size={13} className="text-gray-400" />
                     </TooltipTrigger>
                     <TooltipContent>
