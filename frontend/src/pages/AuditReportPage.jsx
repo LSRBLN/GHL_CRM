@@ -541,7 +541,7 @@ const AuditReportPage = () => {
         {expandedSections.reputation && (
           <CardContent className="pt-0 pb-5 px-5">
             <div className="flex items-start gap-6 mb-4">
-              <ScoreCircle score={report.reputation.score} size={80} strokeWidth={6} />
+              <ScoreCircle score={report.reputation.score} size={80} strokeWidth={6} testId="audit-report-reputation-score" />
               <div className="flex-1">
                 <div className="grid grid-cols-2 md:grid-cols-3 gap-3">
                   <div className="p-3 rounded-lg bg-gray-50 border border-gray-200 text-center">
