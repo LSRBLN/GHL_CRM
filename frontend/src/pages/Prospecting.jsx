@@ -153,7 +153,16 @@ const Prospecting = () => {
         location: location,
         radius: parseInt(radius),
       });
-      setBusinesses(res.data.businesses);
+      // Map snake_case to camelCase for frontend compatibility
+      const mapped = res.data.businesses.map((b) => ({
+        ...b,
+        onlinePresence: b.online_presence || {},
+        conversionRate: b.conversion_rate || 50,
+        conversionLabel: b.conversion_label || 'Mäßig',
+        hasWebsite: b.has_website !== undefined ? b.has_website : !!b.website,
+        reviewCount: b.review_count || 0,
+      }));
+      setBusinesses(mapped);
       setHasSearched(true);
     } catch (err) {
       console.error('Search error:', err);
