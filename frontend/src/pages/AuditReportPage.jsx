@@ -601,11 +601,15 @@ const AuditReportPage = () => {
             </div>
             {/* Sample reviews */}
             {report.reputation.sample_reviews.length > 0 && (
-              <div className="mt-4">
+              <div className="mt-4" data-testid="audit-report-sample-reviews">
                 <h4 className="text-sm font-semibold text-gray-900 mb-2">Positive Bewertungen</h4>
                 <div className="space-y-2">
                   {report.reputation.sample_reviews.map((review, idx) => (
-                    <div key={idx} className="p-3 bg-green-50 rounded-lg border border-green-200">
+                    <div
+                      key={idx}
+                      className="p-3 bg-green-50 rounded-lg border border-green-200"
+                      data-testid={`audit-report-sample-review-${idx}`}
+                    >
                       <div className="flex items-center gap-1 mb-1">
                         {Array.from({ length: parseInt(review.rating) }).map((_, i) => (
                           <Star key={i} size={12} className="fill-amber-400 text-amber-400" />
