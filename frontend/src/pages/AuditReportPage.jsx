@@ -42,7 +42,7 @@ import { Separator } from '../components/ui/separator';
 const API = `${process.env.REACT_APP_BACKEND_URL}/api`;
 
 // Score circle component
-const ScoreCircle = ({ score, size = 120, strokeWidth = 8, label }) => {
+const ScoreCircle = ({ score, size = 120, strokeWidth = 8, label, testId }) => {
   const radius = (size - strokeWidth) / 2;
   const circumference = 2 * Math.PI * radius;
   const offset = circumference - (score / 100) * circumference;
