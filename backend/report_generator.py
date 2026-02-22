@@ -324,19 +324,22 @@ def generate_audit_report(business_name: str, address: str, phone: str = None,
     )
 
     # --- SEO ---
-    avg_rank = random.choice(["3", "5", "7", "10+", "15+", "20+"])
-    competitors = [
-        {"name": f"Wettbewerber {i+1}", "photos": "Ja", "reviews": f"{random.randint(100, 30000)/1000:.2f}K", "rating": round(random.uniform(3.5, 4.9), 1)}
-        for i in range(10)
-    ]
-    seo_score = max(0, min(100, 100 - int(avg_rank.replace('+', '')) * 8 + random.randint(-5, 5)))
+    if seo_override:
+        seo = seo_override
+    else:
+        avg_rank = random.choice(["3", "5", "7", "10+", "15+", "20+"])
+        competitors = [
+            {"name": f"Wettbewerber {i+1}", "photos": "Ja", "reviews": f"{random.randint(100, 30000)/1000:.2f}K", "rating": round(random.uniform(3.5, 4.9), 1)}
+            for i in range(10)
+        ]
+        seo_score = max(0, min(100, 100 - int(avg_rank.replace('+', '')) * 8 + random.randint(-5, 5)))
 
-    seo = SEOAnalysis(
-        score=seo_score,
-        avg_ranking=avg_rank,
-        competitors=competitors,
-        keyword_used=business_name.split()[0] if business_name else "Business",
-    )
+        seo = SEOAnalysis(
+            score=seo_score,
+            avg_ranking=avg_rank,
+            competitors=competitors,
+            keyword_used=business_name.split()[0] if business_name else "Business",
+        )
 
     # --- Overall Score ---
     weights = {
