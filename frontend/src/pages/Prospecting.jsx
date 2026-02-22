@@ -181,10 +181,10 @@ const Prospecting = () => {
         phone: biz.phone,
         website: biz.website,
         rating: biz.rating,
-        review_count: biz.review_count,
+        review_count: biz.reviewCount || biz.review_count || 0,
         category: biz.category,
-        conversion_rate: biz.conversion_rate,
-        online_presence: biz.online_presence,
+        conversion_rate: biz.conversionRate || biz.conversion_rate || 50,
+        online_presence: biz.onlinePresence || biz.online_presence || {},
       });
       setSavedLeads((prev) => new Set([...prev, biz.id]));
     } catch (err) {
