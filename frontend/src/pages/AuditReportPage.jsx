@@ -20,6 +20,7 @@ import {
   Download,
   Share2,
   Printer,
+  FileText,
   Info,
   TrendingUp,
   TrendingDown,
