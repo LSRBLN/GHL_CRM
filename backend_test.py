@@ -10,7 +10,7 @@ import time
 from typing import Dict, Any, Optional
 
 # Get backend URL from frontend .env file
-BACKEND_URL = "https://jolly-volhard-3.preview.emergentagent.com"
+BACKEND_URL = "https://lead-finder-42.preview.emergentagent.com"
 API_BASE_URL = f"{BACKEND_URL}/api/prospecting"
 
 class ProspectingAPITester:
