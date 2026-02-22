@@ -48,7 +48,7 @@ const Conversations = () => {
   };
 
   return (
-    <div className="flex h-[calc(100vh-56px)] -m-6 -mt-6">
+    <div className="flex h-[calc(100vh-56px)]">
       {/* Conversation List */}
       <div className="w-[340px] border-r border-gray-200 bg-white flex flex-col flex-shrink-0">
         {/* Header */}
