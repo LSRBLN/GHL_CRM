@@ -129,6 +129,7 @@ const Prospecting = () => {
   const [hasSearched, setHasSearched] = useState(false);
   const [businesses, setBusinesses] = useState([]);
   const [loading, setLoading] = useState(false);
+  const [searchError, setSearchError] = useState(null);
   const [savedLeads, setSavedLeads] = useState(new Set());
 
   const toggleRow = (id) => {
