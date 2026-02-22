@@ -265,7 +265,13 @@ const AuditReportPage = () => {
     <div className="max-w-4xl mx-auto space-y-6 pb-10">
       {/* Header */}
       <div className="flex items-center justify-between">
-        <Button variant="outline" size="sm" onClick={() => navigate('/prospecting')} className="gap-1.5">
+        <Button
+          variant="outline"
+          size="sm"
+          onClick={() => navigate('/prospecting')}
+          className="gap-1.5"
+          data-testid="audit-report-back-button"
+        >
           <ArrowLeft size={14} />
           Zurück
         </Button>
