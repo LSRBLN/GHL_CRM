@@ -368,7 +368,7 @@ const Prospecting = () => {
           {/* Results Toolbar */}
           <div className="flex items-center justify-between">
             <div className="flex items-center gap-2">
-              <p className="text-sm font-medium text-gray-800">
+              <p className="text-sm font-medium text-gray-800" data-testid="prospecting-results-summary">
                 Wählen Sie ein Unternehmen aus, um einen Marketing-Auditbericht zu erstellen
               </p>
               <Badge variant="secondary" className="text-xs font-medium bg-blue-50 text-blue-700 border border-blue-200">
