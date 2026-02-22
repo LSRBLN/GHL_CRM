@@ -479,6 +479,7 @@ const Prospecting = () => {
                       className={`hover:bg-gray-50 transition-colors group ${
                         selectedRows.includes(biz.id) ? 'bg-blue-50/50' : ''
                       }`}
+                      data-testid={`prospecting-row-${biz.id}`}
                     >
                       <td className="px-3 py-4">
                         <Checkbox
