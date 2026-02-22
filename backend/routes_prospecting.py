@@ -4,7 +4,8 @@ from models import (
     ProspectingSearchRequest, SearchResponse, BusinessResult,
     LeadCreate, Lead, AuditReportCreate, AuditReport, OfferCreate, Offer
 )
-from report_generator import generate_mock_businesses, generate_audit_report
+from report_generator import generate_audit_report
+from seo_analyzer import fetch_seo_analysis
 from google_places import search_google_places
 from offer_generator import generate_offer
 import logging
