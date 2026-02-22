@@ -122,7 +122,8 @@ def generate_mock_businesses(keyword: str, location: str) -> list:
 
 def generate_audit_report(business_name: str, address: str, phone: str = None,
                           website: str = None, rating: float = 0.0,
-                          review_count: int = 0, lead_id: str = None) -> AuditReport:
+                          review_count: int = 0, lead_id: str = None,
+                          seo_override: Optional[SEOAnalysis] = None) -> AuditReport:
     """Generate a comprehensive marketing audit report."""
 
     has_website = website is not None and len(website) > 0
