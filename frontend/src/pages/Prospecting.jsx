@@ -280,6 +280,7 @@ const Prospecting = () => {
                 onChange={(e) => setLocation(e.target.value)}
                 placeholder="Stadt, Adresse..."
                 className="h-10"
+                data-testid="prospecting-location-input"
               />
             </div>
 
