@@ -549,6 +549,7 @@ const Prospecting = () => {
                             onClick={() => handleViewReport(biz)}
                             className="text-xs text-gray-600 hover:text-blue-600 font-medium flex items-center gap-1 whitespace-nowrap transition-colors px-2 py-1 rounded hover:bg-blue-50"
                             title="Audit-Bericht anzeigen"
+                            data-testid={`prospecting-view-report-${biz.id}`}
                           >
                             <Eye size={13} />
                             Bericht
