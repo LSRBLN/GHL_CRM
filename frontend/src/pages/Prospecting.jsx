@@ -204,6 +204,19 @@ const Prospecting = () => {
     navigate(`/report?${params.toString()}`);
   };
 
+  const handleCreateOffer = (biz) => {
+    const params = new URLSearchParams({
+      name: biz.name,
+      address: biz.address,
+      phone: biz.phone || '',
+      website: biz.website || '',
+      rating: biz.rating.toString(),
+      reviews: (biz.reviewCount || biz.review_count || 0).toString(),
+      score: (biz.conversionRate || biz.conversion_rate || 50).toString(),
+    });
+    navigate(`/offer?${params.toString()}`);
+  };
+
   const getConversionColor = (label) => {
     if (label === 'Wahrscheinlicher') return 'bg-green-100 text-green-700 border-green-200';
     return 'bg-orange-100 text-orange-700 border-orange-200';
