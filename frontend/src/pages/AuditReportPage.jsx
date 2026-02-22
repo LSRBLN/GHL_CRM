@@ -219,6 +219,12 @@ const AuditReportPage = () => {
     );
   }
 
+  const seoHasCompetitors = report.seo?.competitors?.length > 0;
+  const seoRankingDisplay =
+    report.seo?.avg_ranking && report.seo.avg_ranking !== '—'
+      ? report.seo.avg_ranking
+      : 'Nicht verfügbar';
+
   const SectionHeader = ({ title, score, section, icon: Icon }) => (
     <button
       onClick={() => toggleSection(section)}
