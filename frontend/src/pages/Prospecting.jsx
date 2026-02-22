@@ -400,7 +400,12 @@ const Prospecting = () => {
                 Spalten verwalten
                 <ChevronDown size={12} />
               </Button>
-              <Button variant="outline" size="sm" className="text-sm gap-1.5 h-8 text-gray-600">
+              <Button
+                variant="outline"
+                size="sm"
+                className="text-sm gap-1.5 h-8 text-gray-600"
+                data-testid="prospecting-add-multi-button"
+              >
                 <UserPlus size={13} />
                 Mehrere Interessenten hinzufügen
               </Button>
