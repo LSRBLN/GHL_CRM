@@ -1,5 +1,6 @@
 import random
 import math
+from typing import Optional
 from models import (
     AuditReport, CriticalInfo, TechStackItem, GoogleProfile,
     ListingsAnalysis, ListingEntry, ReputationAnalysis,
