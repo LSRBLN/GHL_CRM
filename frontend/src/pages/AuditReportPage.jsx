@@ -680,12 +680,12 @@ const AuditReportPage = () => {
             <div className="flex items-start gap-6 mb-4">
               <ScoreCircle score={report.seo.score} size={80} strokeWidth={6} testId="audit-report-seo-score" />
               <div className="flex-1">
-                <p className="text-sm text-gray-600 mb-2">
+                <p className="text-sm text-gray-600 mb-2" data-testid="audit-report-seo-description">
                   Dies ist Ihr durchschnittliches Ranking auf Google Maps, wenn jemand nach "{report.seo.keyword_used}" in meiner Nähe sucht.
                 </p>
                 <div className="p-3 bg-gray-50 rounded-lg border border-gray-200">
                   <p className="text-xs text-gray-500">Ihr Rang</p>
-                  <p className="text-2xl font-bold text-gray-800">{report.seo.avg_ranking}</p>
+                  <p className="text-2xl font-bold text-gray-800" data-testid="audit-report-seo-ranking">{seoRankingDisplay}</p>
                 </div>
               </div>
             </div>
