@@ -88,6 +88,28 @@ async def get_leads():
 async def create_report(report_data: AuditReportCreate):
     """Generate and save a marketing audit report."""
     try:
+        keyword_used = report_data.business_name.split()[0] if report_data.business_name else "Business"
+        seo_data = None
+
+        try:
+            seo_data = await fetch_seo_analysis(
+                business_name=report_data.business_name,
+                address=report_data.address,
+                website=report_data.website,
+                keyword=keyword_used,
+            )
+        except ValueError as exc:
+            logger.error(f"SEO-Analyse Konfiguration fehlt: {exc}")
+            raise HTTPException(status_code=500, detail="SEO-Analyse ist nicht konfiguriert")
+        except Exception as exc:
+            logger.warning(f"SEO-Analyse fehlgeschlagen: {exc}")
+            seo_data = SEOAnalysis(
+                score=0,
+                avg_ranking="—",
+                competitors=[],
+                keyword_used=keyword_used,
+            )
+
         report = generate_audit_report(
             business_name=report_data.business_name,
             address=report_data.address,
@@ -96,6 +118,7 @@ async def create_report(report_data: AuditReportCreate):
             rating=report_data.rating,
             review_count=report_data.review_count,
             lead_id=report_data.lead_id,
+            seo_override=seo_data,
         )
 
         report_dict = report.dict()
