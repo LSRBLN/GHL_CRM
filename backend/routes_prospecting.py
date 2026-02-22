@@ -2,7 +2,7 @@ from fastapi import APIRouter, HTTPException
 from typing import List, Optional
 from models import (
     ProspectingSearchRequest, SearchResponse, BusinessResult,
-    LeadCreate, Lead, AuditReportCreate, AuditReport, OfferCreate, Offer
+    LeadCreate, Lead, AuditReportCreate, AuditReport, SEOAnalysis, OfferCreate, Offer
 )
 from report_generator import generate_audit_report
 from seo_analyzer import fetch_seo_analysis
