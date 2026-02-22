@@ -614,7 +614,7 @@ const AuditReportPage = () => {
                       <Smartphone size={16} className="text-gray-500" />
                       <span className="text-sm font-semibold text-gray-700">Mobil</span>
                     </div>
-                    <ScoreCircle score={report.website_performance.mobile_score} size={90} strokeWidth={6} />
+                    <ScoreCircle score={report.website_performance.mobile_score} size={90} strokeWidth={6} testId="audit-report-mobile-score" />
                     <p className="text-xs text-gray-500 mt-2">Ladezeit: {report.website_performance.mobile_speed}s</p>
                   </div>
                   {/* Desktop */}
