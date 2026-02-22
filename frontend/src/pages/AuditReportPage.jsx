@@ -664,7 +664,7 @@ const AuditReportPage = () => {
                     </div>
                     <div className="flex items-center gap-2 text-sm">
                       <AlertTriangle size={14} className="text-amber-500" />
-                      <span className="text-gray-700">{report.website_performance.mobile_warnings} Erwägen Sie eine Behebung</span>
+                      <span className="text-gray-700" data-testid="audit-report-mobile-warnings">{report.website_performance.mobile_warnings} Erwägen Sie eine Behebung</span>
                     </div>
                     <div className="flex items-center gap-2 text-sm">
                       <CheckCircle2 size={14} className="text-green-500" />
