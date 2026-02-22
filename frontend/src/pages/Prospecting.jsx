@@ -300,7 +300,7 @@ const Prospecting = () => {
                 </TooltipProvider>
               </label>
               <Select value={radius} onValueChange={setRadius}>
-                <SelectTrigger className="h-10">
+                <SelectTrigger className="h-10" data-testid="prospecting-radius-select">
                   <SelectValue />
                 </SelectTrigger>
                 <SelectContent>
