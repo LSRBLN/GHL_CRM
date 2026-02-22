@@ -5,6 +5,7 @@ from models import (
     LeadCreate, Lead, AuditReportCreate, AuditReport
 )
 from report_generator import generate_mock_businesses, generate_audit_report
+from google_places import search_google_places
 import logging
 import os
 from motor.motor_asyncio import AsyncIOMotorClient
