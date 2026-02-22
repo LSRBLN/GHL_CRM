@@ -171,3 +171,69 @@ class AuditReport(BaseModel):
     agency_name: str = "PHNX Vision"
     agency_phone: str = "+491741547610"
     agency_email: str = "phnxvision@gmail.com"
+
+
+# --- Offer / Angebot Models ---
+class ServiceItem(BaseModel):
+    name: str
+    description: str
+    price: float = 0.0
+    included: bool = True
+
+
+class BenefitItem(BaseModel):
+    title: str
+    description: str
+    metric: str = ""
+    icon: str = ""
+
+
+class OfferCreate(BaseModel):
+    lead_id: Optional[str] = None
+    report_id: Optional[str] = None
+    business_name: str
+    address: str
+    phone: Optional[str] = None
+    website: Optional[str] = None
+    rating: float = 0.0
+    review_count: int = 0
+    overall_score: int = 0
+    # Optional custom data
+    custom_services: Optional[List[Dict[str, Any]]] = None
+    custom_note: Optional[str] = None
+
+
+class Offer(BaseModel):
+    id: str = Field(default_factory=lambda: str(uuid.uuid4()))
+    lead_id: Optional[str] = None
+    report_id: Optional[str] = None
+    business_name: str
+    address: str
+    phone: Optional[str] = None
+    website: Optional[str] = None
+    rating: float = 0.0
+    review_count: int = 0
+    overall_score: int = 0
+    # Calculated values
+    potential_customer_increase: str = ""
+    potential_revenue_increase: str = ""
+    potential_visibility_increase: str = ""
+    potential_profit_increase: str = ""
+    # Problems found
+    problems: List[Dict[str, str]] = []
+    # Services offered
+    services: List[ServiceItem] = []
+    total_price: float = 0.0
+    discount_price: Optional[float] = None
+    # Benefits
+    benefits: List[BenefitItem] = []
+    # Agency info
+    agency_name: str = "PHNX Vision"
+    agency_phone: str = "+491741547610"
+    agency_email: str = "phnxvision@gmail.com"
+    agency_website: str = "www.phnxvision.de"
+    # Timestamps
+    valid_until: str = ""
+    created_at: datetime = Field(default_factory=datetime.utcnow)
+    custom_note: Optional[str] = None
+
