@@ -25,9 +25,16 @@ db = client[db_name]
 
 @router.post("/search", response_model=SearchResponse)
 async def search_businesses(request: ProspectingSearchRequest):
-    """Search for businesses by keyword and location."""
+    """Search for businesses by keyword and location using Google Places API."""
     try:
-        businesses = generate_mock_businesses(request.keyword, request.location)
+        # Try real Google Places API first
+        businesses = await search_google_places(request.keyword, request.location, request.radius)
+
+        if not businesses:
+            # Fallback to mock data
+            logger.info("Falling back to mock data for search")
+            businesses = generate_mock_businesses(request.keyword, request.location)
+
         return SearchResponse(
             businesses=businesses,
             total=len(businesses),
