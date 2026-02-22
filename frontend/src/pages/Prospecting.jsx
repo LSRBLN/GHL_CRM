@@ -486,27 +486,33 @@ const Prospecting = () => {
                         </span>
                       </td>
                       <td className="px-4 py-4">
-                        <div className="flex items-center gap-3">
+                        <div className="flex items-center gap-2">
                           <button
                             onClick={() => handleViewReport(biz)}
-                            className="text-sm text-gray-600 hover:text-blue-600 font-medium flex items-center gap-1 whitespace-nowrap transition-colors"
+                            className="text-xs text-gray-600 hover:text-blue-600 font-medium flex items-center gap-1 whitespace-nowrap transition-colors px-2 py-1 rounded hover:bg-blue-50"
                             title="Audit-Bericht anzeigen"
                           >
-                            <Eye size={14} />
+                            <Eye size={13} />
                             Bericht
                           </button>
+                          <button
+                            onClick={() => handleCreateOffer(biz)}
+                            className="text-xs text-green-600 hover:text-green-700 font-medium flex items-center gap-1 whitespace-nowrap transition-colors px-2 py-1 rounded hover:bg-green-50"
+                            title="Angebot erstellen"
+                          >
+                            <FileText size={13} />
+                            Angebot
+                          </button>
                           {savedLeads.has(biz.id) ? (
-                            <span className="text-sm text-green-600 font-medium flex items-center gap-1 whitespace-nowrap">
-                              <CheckCircle2 size={14} />
-                              Hinzugefügt
+                            <span className="text-xs text-green-600 font-medium flex items-center gap-1 whitespace-nowrap px-2 py-1">
+                              <CheckCircle2 size={13} />
                             </span>
                           ) : (
                             <button
                               onClick={() => handleAddLead(biz)}
-                              className="text-sm text-blue-600 hover:text-blue-700 font-medium flex items-center gap-1 whitespace-nowrap transition-colors"
+                              className="text-xs text-blue-600 hover:text-blue-700 font-medium flex items-center gap-1 whitespace-nowrap transition-colors px-2 py-1 rounded hover:bg-blue-50"
                             >
-                              <Plus size={14} />
-                              Hinzufügen
+                              <Plus size={13} />
                             </button>
                           )}
                         </div>
