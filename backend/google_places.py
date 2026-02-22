@@ -28,7 +28,7 @@ async def search_google_places(keyword: str, location: str, radius: int = 5) -> 
             "query": query,
             "radius": radius_meters,
             "language": "de",
-            "key": GOOGLE_PLACES_API_KEY,
+            "key": api_key,
         }
 
         async with httpx.AsyncClient(timeout=15.0) as client:
@@ -125,7 +125,7 @@ async def _get_place_details(place_id: str) -> tuple:
             "place_id": place_id,
             "fields": "formatted_phone_number,website",
             "language": "de",
-            "key": GOOGLE_PLACES_API_KEY,
+            "key": api_key,
         }
 
         async with httpx.AsyncClient(timeout=10.0) as client:
