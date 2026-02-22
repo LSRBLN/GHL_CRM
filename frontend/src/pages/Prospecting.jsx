@@ -38,7 +38,7 @@ import {
   TooltipProvider,
   TooltipTrigger,
 } from '../components/ui/tooltip';
-import { prospectingResults, radiusOptions } from '../data/prospectingData';
+import { radiusOptions } from '../data/prospectingData';
 
 const API = `${process.env.REACT_APP_BACKEND_URL}/api`;
 
