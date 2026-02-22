@@ -459,10 +459,30 @@ const Prospecting = () => {
                         </span>
                       </td>
                       <td className="px-4 py-4">
-                        <button className="text-sm text-blue-600 hover:text-blue-700 font-medium flex items-center gap-1 whitespace-nowrap transition-colors">
-                          <Plus size={14} />
-                          Hinzufügen
-                        </button>
+                        <div className="flex items-center gap-3">
+                          <button
+                            onClick={() => handleViewReport(biz)}
+                            className="text-sm text-gray-600 hover:text-blue-600 font-medium flex items-center gap-1 whitespace-nowrap transition-colors"
+                            title="Audit-Bericht anzeigen"
+                          >
+                            <Eye size={14} />
+                            Bericht
+                          </button>
+                          {savedLeads.has(biz.id) ? (
+                            <span className="text-sm text-green-600 font-medium flex items-center gap-1 whitespace-nowrap">
+                              <CheckCircle2 size={14} />
+                              Hinzugefügt
+                            </span>
+                          ) : (
+                            <button
+                              onClick={() => handleAddLead(biz)}
+                              className="text-sm text-blue-600 hover:text-blue-700 font-medium flex items-center gap-1 whitespace-nowrap transition-colors"
+                            >
+                              <Plus size={14} />
+                              Hinzufügen
+                            </button>
+                          )}
+                        </div>
                       </td>
                     </tr>
                   ))}
