@@ -266,6 +266,28 @@ const AuditReportPage = () => {
             <Share2 size={14} />
             Teilen
           </Button>
+          <Button
+            size="sm"
+            className="gap-1.5 bg-green-600 hover:bg-green-700"
+            onClick={() => {
+              if (report) {
+                const params = new URLSearchParams({
+                  name: report.business_name,
+                  address: report.address,
+                  phone: report.phone || '',
+                  website: report.website || '',
+                  rating: report.rating.toString(),
+                  reviews: report.review_count.toString(),
+                  score: report.overall_score.toString(),
+                  report_id: report.id || '',
+                });
+                navigate(`/offer?${params.toString()}`);
+              }
+            }}
+          >
+            <FileText size={14} />
+            Angebot erstellen
+          </Button>
           <Button size="sm" className="gap-1.5 bg-blue-600 hover:bg-blue-700">
             <Download size={14} />
             PDF Download
