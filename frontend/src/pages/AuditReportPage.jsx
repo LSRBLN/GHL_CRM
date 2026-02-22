@@ -583,7 +583,7 @@ const AuditReportPage = () => {
                 <div className="grid grid-cols-3 gap-3">
                   <div className="text-center">
                     <p className="text-xs text-gray-500">GMB-Bewertungen</p>
-                    <p className="text-lg font-bold text-gray-800">{report.reputation.total_gmb_reviews >= 1000 ? `${(report.reputation.total_gmb_reviews / 1000).toFixed(1)}K` : report.reputation.total_gmb_reviews}</p>
+                    <p className="text-lg font-bold text-gray-800" data-testid="audit-report-reputation-gmb-reviews">{report.reputation.total_gmb_reviews >= 1000 ? `${(report.reputation.total_gmb_reviews / 1000).toFixed(1)}K` : report.reputation.total_gmb_reviews}</p>
                   </div>
                   <div className="text-center">
                     <p className="text-xs text-gray-500">GMB-Bewertung</p>
