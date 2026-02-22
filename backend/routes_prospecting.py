@@ -33,9 +33,7 @@ async def search_businesses(request: ProspectingSearchRequest):
         businesses = await search_google_places(request.keyword, request.location, request.radius)
 
         if not businesses:
-            # Fallback to mock data
-            logger.info("Falling back to mock data for search")
-            businesses = generate_mock_businesses(request.keyword, request.location)
+            logger.info("Keine Ergebnisse von Google Places erhalten")
 
         return SearchResponse(
             businesses=businesses,
