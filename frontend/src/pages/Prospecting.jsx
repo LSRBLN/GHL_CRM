@@ -199,7 +199,7 @@ const Prospecting = () => {
       phone: biz.phone || '',
       website: biz.website || '',
       rating: biz.rating.toString(),
-      reviews: biz.review_count.toString(),
+      reviews: (biz.reviewCount || biz.review_count || 0).toString(),
     });
     navigate(`/report?${params.toString()}`);
   };
