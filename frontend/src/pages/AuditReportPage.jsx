@@ -588,7 +588,7 @@ const AuditReportPage = () => {
                   <div className="text-center">
                     <p className="text-xs text-gray-500">GMB-Bewertung</p>
                     <div className="flex items-center justify-center gap-1">
-                      <p className="text-lg font-bold text-gray-800">{report.reputation.gmb_rating}</p>
+                      <p className="text-lg font-bold text-gray-800" data-testid="audit-report-reputation-gmb-rating">{report.reputation.gmb_rating}</p>
                       <Star size={14} className="fill-amber-400 text-amber-400" />
                     </div>
                   </div>
