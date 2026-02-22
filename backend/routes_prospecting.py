@@ -1,5 +1,4 @@
 from fastapi import APIRouter, HTTPException
-from typing import List, Optional
 from models import (
     ProspectingSearchRequest, SearchResponse, BusinessResult,
     LeadCreate, Lead, AuditReportCreate, AuditReport, SEOAnalysis, OfferCreate, Offer
