@@ -690,36 +690,77 @@ const AuditReportPage = () => {
               </div>
             </div>
             {/* Competitor table */}
-            <h4 className="text-sm font-semibold text-gray-900 mb-2">Rang-Tracker</h4>
-            <div className="overflow-x-auto">
-              <table className="w-full text-sm">
-                <thead>
-                  <tr className="border-b bg-gray-50">
-                    <th className="text-left px-3 py-2 text-xs font-semibold text-gray-500">#</th>
-                    <th className="text-left px-3 py-2 text-xs font-semibold text-gray-500">Firmenname</th>
-                    <th className="text-left px-3 py-2 text-xs font-semibold text-gray-500">Fotos</th>
-                    <th className="text-left px-3 py-2 text-xs font-semibold text-gray-500">Bewertungen</th>
-                    <th className="text-left px-3 py-2 text-xs font-semibold text-gray-500">Bewertung</th>
-                  </tr>
-                </thead>
-                <tbody className="divide-y divide-gray-100">
-                  {report.seo.competitors.map((comp, idx) => (
-                    <tr key={idx} className="hover:bg-gray-50">
-                      <td className="px-3 py-2 text-gray-500 text-xs">{idx + 1}</td>
-                      <td className="px-3 py-2 font-medium text-gray-800 text-xs">{comp.name}</td>
-                      <td className="px-3 py-2 text-gray-600 text-xs">{comp.photos}</td>
-                      <td className="px-3 py-2 text-gray-600 text-xs">{comp.reviews}</td>
-                      <td className="px-3 py-2">
-                        <div className="flex items-center gap-1">
-                          <span className="text-xs text-gray-800">{comp.rating}</span>
-                          <Star size={10} className="fill-amber-400 text-amber-400" />
-                        </div>
-                      </td>
+            <h4
+              className="text-sm font-semibold text-gray-900 mb-2"
+              data-testid="audit-report-seo-competitor-title"
+            >
+              Rang-Tracker
+            </h4>
+            {seoHasCompetitors ? (
+              <div className="overflow-x-auto" data-testid="audit-report-seo-competitor-table">
+                <table className="w-full text-sm">
+                  <thead>
+                    <tr className="border-b bg-gray-50">
+                      <th className="text-left px-3 py-2 text-xs font-semibold text-gray-500">#</th>
+                      <th className="text-left px-3 py-2 text-xs font-semibold text-gray-500">Firmenname</th>
+                      <th className="text-left px-3 py-2 text-xs font-semibold text-gray-500">Fotos</th>
+                      <th className="text-left px-3 py-2 text-xs font-semibold text-gray-500">Bewertungen</th>
+                      <th className="text-left px-3 py-2 text-xs font-semibold text-gray-500">Bewertung</th>
                     </tr>
-                  ))}
-                </tbody>
-              </table>
-            </div>
+                  </thead>
+                  <tbody className="divide-y divide-gray-100">
+                    {report.seo.competitors.map((comp, idx) => (
+                      <tr
+                        key={idx}
+                        className="hover:bg-gray-50"
+                        data-testid={`audit-report-seo-competitor-row-${idx}`}
+                      >
+                        <td
+                          className="px-3 py-2 text-gray-500 text-xs"
+                          data-testid={`audit-report-seo-competitor-rank-${idx}`}
+                        >
+                          {idx + 1}
+                        </td>
+                        <td
+                          className="px-3 py-2 font-medium text-gray-800 text-xs"
+                          data-testid={`audit-report-seo-competitor-name-${idx}`}
+                        >
+                          {comp.name}
+                        </td>
+                        <td
+                          className="px-3 py-2 text-gray-600 text-xs"
+                          data-testid={`audit-report-seo-competitor-photos-${idx}`}
+                        >
+                          {comp.photos}
+                        </td>
+                        <td
+                          className="px-3 py-2 text-gray-600 text-xs"
+                          data-testid={`audit-report-seo-competitor-reviews-${idx}`}
+                        >
+                          {comp.reviews}
+                        </td>
+                        <td
+                          className="px-3 py-2"
+                          data-testid={`audit-report-seo-competitor-rating-${idx}`}
+                        >
+                          <div className="flex items-center gap-1">
+                            <span className="text-xs text-gray-800">{comp.rating}</span>
+                            <Star size={10} className="fill-amber-400 text-amber-400" />
+                          </div>
+                        </td>
+                      </tr>
+                    ))}
+                  </tbody>
+                </table>
+              </div>
+            ) : (
+              <div
+                className="text-sm text-gray-500 bg-gray-50 border border-gray-200 rounded-lg px-3 py-2"
+                data-testid="audit-report-seo-no-data"
+              >
+                Keine Wettbewerbsdaten verfügbar. Bitte später erneut prüfen.
+              </div>
+            )}
           </CardContent>
         )}
       </Card>
