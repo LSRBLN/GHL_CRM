@@ -507,7 +507,7 @@ const AuditReportPage = () => {
                     <p className="text-lg font-bold text-green-700">{report.listings.exact_matches}</p>
                     <p className="text-[10px] text-green-600">Exakte Treffer</p>
                   </div>
-                  <div className="p-2 rounded bg-amber-50 border border-amber-200 text-center">
+                  <div className="p-2 rounded bg-amber-50 border border-amber-200 text-center" data-testid="audit-report-listings-partial">
                     <p className="text-lg font-bold text-amber-700">{report.listings.partial_matches}</p>
                     <p className="text-[10px] text-amber-600">Teilweise</p>
                   </div>
