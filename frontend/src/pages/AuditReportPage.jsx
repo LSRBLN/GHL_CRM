@@ -691,7 +691,7 @@ const AuditReportPage = () => {
             ) : (
               <div className="text-center py-6">
                 <XCircle size={32} className="text-red-300 mx-auto mb-2" />
-                <p className="text-sm text-gray-500">Keine Website gefunden. Eine Website ist entscheidend für Ihre Online-Präsenz.</p>
+                <p className="text-sm text-gray-500" data-testid="audit-report-no-website">Keine Website gefunden. Eine Website ist entscheidend für Ihre Online-Präsenz.</p>
               </div>
             )}
           </CardContent>
