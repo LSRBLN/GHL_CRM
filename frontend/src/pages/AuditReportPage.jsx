@@ -487,7 +487,7 @@ const AuditReportPage = () => {
         {expandedSections.listings && (
           <CardContent className="pt-0 pb-5 px-5">
             <div className="flex items-center gap-6 mb-4">
-              <ScoreCircle score={report.listings.score} size={80} strokeWidth={6} />
+              <ScoreCircle score={report.listings.score} size={80} strokeWidth={6} testId="audit-report-listings-score" />
               <div className="flex-1">
                 <p className="text-sm text-gray-600 mb-3">{report.listings.summary_text}</p>
                 <div className="grid grid-cols-3 gap-3">
