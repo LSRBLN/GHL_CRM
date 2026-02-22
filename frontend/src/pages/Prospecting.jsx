@@ -526,9 +526,12 @@ const Prospecting = () => {
                         <p className="text-xs text-gray-500 mt-0.5" data-testid={`prospecting-review-count-${biz.id}`}>{biz.reviewCount} Bewertungen</p>
                       </td>
                       <td className="px-4 py-4">
-                        <span className={`text-sm ${
-                          biz.hasWebsite ? 'text-gray-700' : 'text-gray-400'
-                        }`}>
+                        <span
+                          className={`text-sm ${
+                            biz.hasWebsite ? 'text-gray-700' : 'text-gray-400'
+                          }`}
+                          data-testid={`prospecting-website-status-${biz.id}`}
+                        >
                           {biz.hasWebsite ? 'Yes' : 'No'}
                         </span>
                       </td>
