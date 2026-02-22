@@ -346,12 +346,12 @@ const AuditReportPage = () => {
                 <MapPin size={13} /> {report.address}
               </div>
               {report.phone && (
-                <div className="flex items-center gap-1 mt-0.5 text-sm text-gray-500">
+                <div className="flex items-center gap-1 mt-0.5 text-sm text-gray-500" data-testid="audit-report-business-phone">
                   <Phone size={13} /> {report.phone}
                 </div>
               )}
               {report.website && (
-                <div className="flex items-center gap-1 mt-0.5 text-sm text-blue-600">
+                <div className="flex items-center gap-1 mt-0.5 text-sm text-blue-600" data-testid="audit-report-business-website">
                   <Globe size={13} /> {report.website}
                 </div>
               )}
