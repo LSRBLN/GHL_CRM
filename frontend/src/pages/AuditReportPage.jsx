@@ -594,7 +594,7 @@ const AuditReportPage = () => {
                   </div>
                   <div className="text-center">
                     <p className="text-xs text-gray-500">FB-Bewertungen</p>
-                    <p className="text-lg font-bold text-gray-800">{report.reputation.total_fb_reviews}</p>
+                    <p className="text-lg font-bold text-gray-800" data-testid="audit-report-reputation-fb-reviews">{report.reputation.total_fb_reviews}</p>
                   </div>
                 </div>
               </div>
