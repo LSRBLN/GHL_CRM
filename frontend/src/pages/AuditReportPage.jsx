@@ -623,7 +623,7 @@ const AuditReportPage = () => {
                       <Monitor size={16} className="text-gray-500" />
                       <span className="text-sm font-semibold text-gray-700">Desktop</span>
                     </div>
-                    <ScoreCircle score={report.website_performance.desktop_score} size={90} strokeWidth={6} />
+                    <ScoreCircle score={report.website_performance.desktop_score} size={90} strokeWidth={6} testId="audit-report-desktop-score" />
                     <p className="text-xs text-gray-500 mt-2">Ladezeit: {report.website_performance.desktop_speed}s</p>
                   </div>
                 </div>
