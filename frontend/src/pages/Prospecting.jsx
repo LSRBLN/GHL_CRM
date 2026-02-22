@@ -387,7 +387,7 @@ const Prospecting = () => {
               </Badge>
             </div>
             <div className="flex items-center gap-2">
-              <Button variant="outline" size="sm" className="text-sm gap-1.5 h-8 text-gray-600">
+              <Button variant="outline" size="sm" className="text-sm gap-1.5 h-8 text-gray-600" data-testid="prospecting-filter-button">
                 <Filter size={13} />
               </Button>
               <Button variant="outline" size="sm" className="text-sm gap-1.5 h-8 text-gray-600">
