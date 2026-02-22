@@ -340,8 +340,27 @@ const Prospecting = () => {
               allowFullScreen=""
               loading="lazy"
               referrerPolicy="no-referrer-when-downgrade"
+              data-testid="prospecting-map-iframe"
             />
           </div>
+
+          {searchError && (
+            <div
+              className="mt-3 text-sm text-red-600 bg-red-50 border border-red-200 rounded-lg px-3 py-2"
+              data-testid="prospecting-search-error"
+            >
+              {searchError}
+            </div>
+          )}
+
+          {!searchError && businesses.length === 0 && (
+            <div
+              className="mt-3 text-sm text-gray-500 bg-gray-50 border border-gray-200 rounded-lg px-3 py-2"
+              data-testid="prospecting-no-results"
+            >
+              Keine Ergebnisse gefunden. Versuchen Sie einen anderen Suchbegriff oder Standort.
+            </div>
+          )}
 
           {/* Results Toolbar */}
           <div className="flex items-center justify-between">
