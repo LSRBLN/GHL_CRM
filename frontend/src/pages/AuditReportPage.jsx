@@ -276,7 +276,7 @@ const AuditReportPage = () => {
           Zurück
         </Button>
         <div className="flex items-center gap-2">
-          <Button variant="outline" size="sm" className="gap-1.5">
+          <Button variant="outline" size="sm" className="gap-1.5" data-testid="audit-report-print-button">
             <Printer size={14} />
             Drucken
           </Button>
