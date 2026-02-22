@@ -15,9 +15,9 @@ load_dotenv(Path(__file__).parent / '.env')
 
 async def search_google_places(keyword: str, location: str, radius: int = 5) -> list:
     """Search for businesses using Google Places Text Search API."""
-    if not GOOGLE_PLACES_API_KEY:
-        logger.warning("No Google Places API key configured, using mock data")
-        return []
+    api_key = os.environ.get("GOOGLE_PLACES_API_KEY")
+    if not api_key:
+        raise ValueError("GOOGLE_PLACES_API_KEY ist nicht konfiguriert")
 
     try:
         query = f"{keyword} in {location}"
