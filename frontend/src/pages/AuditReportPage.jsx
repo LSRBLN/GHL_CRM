@@ -319,9 +319,9 @@ const AuditReportPage = () => {
         <div className="bg-gradient-to-r from-gray-900 to-gray-800 p-6">
           <div className="flex items-start justify-between">
             <div>
-              <p className="text-blue-400 text-sm font-medium mb-1">{report.agency_name}</p>
-              <h1 className="text-2xl font-bold text-white mb-1">Marketing-Audit-Bericht</h1>
-              <p className="text-gray-400 text-sm">
+              <p className="text-blue-400 text-sm font-medium mb-1" data-testid="audit-report-agency-name">{report.agency_name}</p>
+              <h1 className="text-2xl font-bold text-white mb-1" data-testid="audit-report-title">Marketing-Audit-Bericht</h1>
+              <p className="text-gray-400 text-sm" data-testid="audit-report-date">
                 Erstellt am {new Date(report.created_at).toLocaleDateString('de-DE', { day: '2-digit', month: 'long', year: 'numeric' })}
               </p>
             </div>
