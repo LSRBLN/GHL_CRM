@@ -144,9 +144,55 @@ const Prospecting = () => {
     }
   };
 
-  const handleSearch = () => {
-    setHasSearched(true);
-    // Mock search - data already loaded
+  const handleSearch = async () => {
+    if (!searchTerm.trim()) return;
+    setLoading(true);
+    try {
+      const res = await axios.post(`${API}/prospecting/search`, {
+        keyword: searchTerm,
+        location: location,
+        radius: parseInt(radius),
+      });
+      setBusinesses(res.data.businesses);
+      setHasSearched(true);
+    } catch (err) {
+      console.error('Search error:', err);
+      // Fallback to local mock data
+      setBusinesses(prospectingResults);
+      setHasSearched(true);
+    }
+    setLoading(false);
+  };
+
+  const handleAddLead = async (biz) => {
+    try {
+      await axios.post(`${API}/prospecting/leads`, {
+        name: biz.name,
+        address: biz.address,
+        phone: biz.phone,
+        website: biz.website,
+        rating: biz.rating,
+        review_count: biz.review_count,
+        category: biz.category,
+        conversion_rate: biz.conversion_rate,
+        online_presence: biz.online_presence,
+      });
+      setSavedLeads((prev) => new Set([...prev, biz.id]));
+    } catch (err) {
+      console.error('Save lead error:', err);
+    }
+  };
+
+  const handleViewReport = (biz) => {
+    const params = new URLSearchParams({
+      name: biz.name,
+      address: biz.address,
+      phone: biz.phone || '',
+      website: biz.website || '',
+      rating: biz.rating.toString(),
+      reviews: biz.review_count.toString(),
+    });
+    navigate(`/report?${params.toString()}`);
   };
 
   const getConversionColor = (label) => {
