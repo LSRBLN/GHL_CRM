@@ -149,6 +149,7 @@ const Prospecting = () => {
   const handleSearch = async () => {
     if (!searchTerm.trim()) return;
     setLoading(true);
+    setSearchError(null);
     try {
       const res = await axios.post(`${API}/prospecting/search`, {
         keyword: searchTerm,
@@ -166,10 +167,11 @@ const Prospecting = () => {
       }));
       setBusinesses(mapped);
       setHasSearched(true);
+      setSearchError(null);
     } catch (err) {
       console.error('Search error:', err);
-      // Fallback to local mock data
-      setBusinesses(prospectingResults);
+      setBusinesses([]);
+      setSearchError('Suche fehlgeschlagen. Bitte erneut versuchen.');
       setHasSearched(true);
     }
     setLoading(false);
