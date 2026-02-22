@@ -432,7 +432,11 @@ const AuditReportPage = () => {
             </p>
             <div className="space-y-3">
               {report.tech_stack.map((tech, idx) => (
-                <div key={idx} className="flex items-start gap-4 p-3 rounded-lg border border-gray-100 hover:bg-gray-50 transition-colors">
+                <div
+                  key={idx}
+                  className="flex items-start gap-4 p-3 rounded-lg border border-gray-100 hover:bg-gray-50 transition-colors"
+                  data-testid={`audit-report-tech-item-${idx}`}
+                >
                   <StatusIcon detected={tech.detected} />
                   <div className="flex-1">
                     <h4 className="text-sm font-semibold text-gray-900">{tech.name}</h4>
