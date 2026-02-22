@@ -318,6 +318,7 @@ const Prospecting = () => {
               onClick={handleSearch}
               disabled={loading}
               className="h-10 px-6 bg-blue-600 hover:bg-blue-700 text-white font-medium disabled:opacity-50"
+              data-testid="prospecting-search-button"
             >
               {loading ? (
                 <div className="w-4 h-4 border-2 border-white border-t-transparent rounded-full animate-spin" />
