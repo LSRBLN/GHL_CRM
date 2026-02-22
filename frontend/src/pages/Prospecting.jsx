@@ -494,7 +494,7 @@ const Prospecting = () => {
                             <Users size={14} />
                           </div>
                           <div>
-                            <p className="text-sm font-semibold text-gray-900 leading-tight">{biz.name}</p>
+                            <p className="text-sm font-semibold text-gray-900 leading-tight" data-testid={`prospecting-business-name-${biz.id}`}>{biz.name}</p>
                             <div className="flex items-center gap-1 mt-1">
                               <MapPin size={11} className="text-gray-400 flex-shrink-0" />
                               <p className="text-xs text-gray-500 leading-tight">{biz.address}</p>
