@@ -576,7 +576,7 @@ const AuditReportPage = () => {
                   </div>
                   <div className="p-3 rounded-lg bg-red-50 border border-red-200 text-center">
                     <p className="text-xs text-red-600">Negative</p>
-                    <p className="text-xl font-bold text-red-700">{report.reputation.negative_reviews}</p>
+                    <p className="text-xl font-bold text-red-700" data-testid="audit-report-reputation-negative-count">{report.reputation.negative_reviews}</p>
                   </div>
                 </div>
                 <Separator className="my-3" />
