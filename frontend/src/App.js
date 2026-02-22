@@ -12,6 +12,7 @@ import Marketing from "./pages/Marketing";
 import Automation from "./pages/Automation";
 import Payments from "./pages/Payments";
 import Reporting from "./pages/Reporting";
+import Prospecting from "./pages/Prospecting";
 import {
   Sites,
   Reputation,
