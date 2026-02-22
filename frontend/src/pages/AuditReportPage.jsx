@@ -280,7 +280,7 @@ const AuditReportPage = () => {
             <Printer size={14} />
             Drucken
           </Button>
-          <Button variant="outline" size="sm" className="gap-1.5">
+          <Button variant="outline" size="sm" className="gap-1.5" data-testid="audit-report-share-button">
             <Share2 size={14} />
             Teilen
           </Button>
