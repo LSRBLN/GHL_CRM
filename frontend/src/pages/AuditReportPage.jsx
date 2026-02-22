@@ -532,12 +532,22 @@ const AuditReportPage = () => {
                 </thead>
                 <tbody className="divide-y divide-gray-100">
                   {report.listings.details.slice(0, 15).map((entry, idx) => (
-                    <tr key={idx} className="hover:bg-gray-50">
-                      <td className="px-3 py-2 font-medium text-gray-800 text-xs">{entry.platform}</td>
-                      <td className="px-3 py-2 text-gray-600 text-xs truncate max-w-[150px]">{entry.display_name}</td>
-                      <td className="px-3 py-2 text-gray-600 text-xs">{entry.phone}</td>
-                      <td className="px-3 py-2 text-gray-600 text-xs truncate max-w-[150px]">{entry.address}</td>
-                      <td className="px-3 py-2"><ListingStatusBadge status={entry.status} /></td>
+                    <tr key={idx} className="hover:bg-gray-50" data-testid={`audit-report-listing-row-${idx}`}>
+                      <td className="px-3 py-2 font-medium text-gray-800 text-xs" data-testid={`audit-report-listing-platform-${idx}`}>
+                        {entry.platform}
+                      </td>
+                      <td className="px-3 py-2 text-gray-600 text-xs truncate max-w-[150px]" data-testid={`audit-report-listing-name-${idx}`}>
+                        {entry.display_name}
+                      </td>
+                      <td className="px-3 py-2 text-gray-600 text-xs" data-testid={`audit-report-listing-phone-${idx}`}>
+                        {entry.phone}
+                      </td>
+                      <td className="px-3 py-2 text-gray-600 text-xs truncate max-w-[150px]" data-testid={`audit-report-listing-address-${idx}`}>
+                        {entry.address}
+                      </td>
+                      <td className="px-3 py-2" data-testid={`audit-report-listing-status-${idx}`}>
+                        <ListingStatusBadge status={entry.status} />
+                      </td>
                     </tr>
                   ))}
                 </tbody>
