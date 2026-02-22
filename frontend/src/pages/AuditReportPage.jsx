@@ -64,7 +64,7 @@ const ScoreCircle = ({ score, size = 120, strokeWidth = 8, label, testId }) => {
   };
 
   return (
-    <div className="flex flex-col items-center">
+    <div className="flex flex-col items-center" data-testid={testId}>
       <div className="relative" style={{ width: size, height: size }}>
         <svg width={size} height={size} className="transform -rotate-90">
           <circle
