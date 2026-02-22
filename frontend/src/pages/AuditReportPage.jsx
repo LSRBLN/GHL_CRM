@@ -302,6 +302,7 @@ const AuditReportPage = () => {
                 navigate(`/offer?${params.toString()}`);
               }
             }}
+            data-testid="audit-report-create-offer-button"
           >
             <FileText size={14} />
             Angebot erstellen
