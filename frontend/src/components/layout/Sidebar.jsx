@@ -24,6 +24,7 @@ import { Tooltip, TooltipContent, TooltipProvider, TooltipTrigger } from '../../
 
 const navItems = [
   { icon: LayoutDashboard, label: 'Dashboard', path: '/' },
+  { icon: Crosshair, label: 'Ausschau halten', path: '/prospecting' },
   { icon: MessageSquare, label: 'Conversations', path: '/conversations' },
   { icon: CalendarDays, label: 'Calendars', path: '/calendars' },
   { icon: Users, label: 'Contacts', path: '/contacts' },
