@@ -2,10 +2,11 @@ from fastapi import APIRouter, HTTPException
 from typing import List, Optional
 from models import (
     ProspectingSearchRequest, SearchResponse, BusinessResult,
-    LeadCreate, Lead, AuditReportCreate, AuditReport
+    LeadCreate, Lead, AuditReportCreate, AuditReport, OfferCreate, Offer
 )
 from report_generator import generate_mock_businesses, generate_audit_report
 from google_places import search_google_places
+from offer_generator import generate_offer
 import logging
 import os
 from motor.motor_asyncio import AsyncIOMotorClient
