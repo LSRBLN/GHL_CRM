@@ -398,7 +398,11 @@ const AuditReportPage = () => {
                 { num: '03', title: 'Chat-Widget', status: report.critical_info.chat_widget, text: report.critical_info.chat_widget_text, icon: MessageSquare },
                 { num: '04', title: 'Bewertungsantworten', status: report.critical_info.review_response_rate > 50, text: report.critical_info.review_response_text, icon: Star },
               ].map((item) => (
-                <div key={item.num} className={`p-4 rounded-lg border ${item.status ? 'border-green-200 bg-green-50' : 'border-red-200 bg-red-50'}`}>
+                <div
+                  key={item.num}
+                  className={`p-4 rounded-lg border ${item.status ? 'border-green-200 bg-green-50' : 'border-red-200 bg-red-50'}`}
+                  data-testid={`audit-report-critical-card-${item.num}`}
+                >
                   <div className="flex items-start gap-3">
                     <div className={`w-8 h-8 rounded-lg flex items-center justify-center flex-shrink-0 ${item.status ? 'bg-green-100' : 'bg-red-100'}`}>
                       <item.icon size={16} className={item.status ? 'text-green-600' : 'text-red-600'} />
