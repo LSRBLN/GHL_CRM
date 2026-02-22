@@ -39,6 +39,8 @@ import {
 } from '../components/ui/tooltip';
 import { prospectingResults, radiusOptions } from '../data/prospectingData';
 
+const API = `${process.env.REACT_APP_BACKEND_URL}/api`;
+
 // Star rating component
 const StarRating = ({ rating }) => {
   const fullStars = Math.floor(rating);
