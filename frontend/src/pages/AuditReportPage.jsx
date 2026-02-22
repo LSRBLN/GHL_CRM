@@ -678,7 +678,7 @@ const AuditReportPage = () => {
         {expandedSections.seo && (
           <CardContent className="pt-0 pb-5 px-5">
             <div className="flex items-start gap-6 mb-4">
-              <ScoreCircle score={report.seo.score} size={80} strokeWidth={6} />
+              <ScoreCircle score={report.seo.score} size={80} strokeWidth={6} testId="audit-report-seo-score" />
               <div className="flex-1">
                 <p className="text-sm text-gray-600 mb-2">
                   Dies ist Ihr durchschnittliches Ranking auf Google Maps, wenn jemand nach "{report.seo.keyword_used}" in meiner Nähe sucht.
