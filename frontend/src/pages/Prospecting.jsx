@@ -484,6 +484,7 @@ const Prospecting = () => {
                         <Checkbox
                           checked={selectedRows.includes(biz.id)}
                           onCheckedChange={() => toggleRow(biz.id)}
+                          data-testid={`prospecting-row-checkbox-${biz.id}`}
                         />
                       </td>
                       <td className="px-4 py-4">
