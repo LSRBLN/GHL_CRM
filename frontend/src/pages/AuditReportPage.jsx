@@ -768,16 +768,16 @@ const AuditReportPage = () => {
       {/* CTA */}
       <Card className="border-2 border-blue-200 bg-blue-50 shadow-sm">
         <CardContent className="p-6 text-center">
-          <h3 className="text-lg font-bold text-gray-900 mb-2">Bereit, Ihre Online-Präsenz zu verbessern?</h3>
-          <p className="text-sm text-gray-600 mb-4">
+          <h3 className="text-lg font-bold text-gray-900 mb-2" data-testid="audit-report-cta-title">Bereit, Ihre Online-Präsenz zu verbessern?</h3>
+          <p className="text-sm text-gray-600 mb-4" data-testid="audit-report-cta-description">
             Kontaktieren Sie {report.agency_name} für eine kostenlose Beratung und maßgeschneiderte Lösungen.
           </p>
           <div className="flex items-center justify-center gap-3">
-            <Button className="bg-blue-600 hover:bg-blue-700 gap-1.5">
+            <Button className="bg-blue-600 hover:bg-blue-700 gap-1.5" data-testid="audit-report-cta-call-button">
               <Phone size={14} />
               Jetzt kontaktieren
             </Button>
-            <Button variant="outline" className="gap-1.5">
+            <Button variant="outline" className="gap-1.5" data-testid="audit-report-cta-email-button">
               <Mail size={14} />
               E-Mail senden
             </Button>
