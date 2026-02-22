@@ -152,3 +152,72 @@ async def delete_lead(lead_id: str):
     except Exception as e:
         logger.error(f"Delete lead error: {e}")
         raise HTTPException(status_code=500, detail=str(e))
+
+
+# --- Offer Endpoints ---
+
+@router.post("/offer")
+async def create_offer(offer_data: OfferCreate):
+    """Generate a personalized offer/proposal for a lead."""
+    try:
+        # Try to fetch the audit report if report_id is provided
+        audit_report = None
+        if offer_data.report_id:
+            report = await db.audit_reports.find_one({"id": offer_data.report_id})
+            if report:
+                report.pop("_id", None)
+                audit_report = report
+
+        offer = generate_offer(
+            business_name=offer_data.business_name,
+            address=offer_data.address,
+            phone=offer_data.phone,
+            website=offer_data.website,
+            rating=offer_data.rating,
+            review_count=offer_data.review_count,
+            overall_score=offer_data.overall_score,
+            lead_id=offer_data.lead_id,
+            report_id=offer_data.report_id,
+            audit_report=audit_report,
+            custom_services=offer_data.custom_services,
+            custom_note=offer_data.custom_note,
+        )
+
+        offer_dict = offer.dict()
+        offer_dict["created_at"] = datetime.utcnow()
+        await db.offers.insert_one(offer_dict)
+        offer_dict.pop("_id", None)
+
+        return offer_dict
+    except Exception as e:
+        logger.error(f"Create offer error: {e}")
+        raise HTTPException(status_code=500, detail=str(e))
+
+
+@router.get("/offer/{offer_id}")
+async def get_offer(offer_id: str):
+    """Get a saved offer."""
+    try:
+        offer = await db.offers.find_one({"id": offer_id})
+        if not offer:
+            raise HTTPException(status_code=404, detail="Angebot nicht gefunden")
+        offer.pop("_id", None)
+        return offer
+    except HTTPException:
+        raise
+    except Exception as e:
+        logger.error(f"Get offer error: {e}")
+        raise HTTPException(status_code=500, detail=str(e))
+
+
+@router.get("/offers")
+async def get_all_offers():
+    """Get all offers."""
+    try:
+        offers = await db.offers.find().sort("created_at", -1).to_list(100)
+        for offer in offers:
+            offer.pop("_id", None)
+        return {"offers": offers, "total": len(offers)}
+    except Exception as e:
+        logger.error(f"Get offers error: {e}")
+        raise HTTPException(status_code=500, detail=str(e))
