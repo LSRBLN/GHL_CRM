@@ -564,13 +564,17 @@ const Prospecting = () => {
                             Angebot
                           </button>
                           {savedLeads.has(biz.id) ? (
-                            <span className="text-xs text-green-600 font-medium flex items-center gap-1 whitespace-nowrap px-2 py-1">
+                            <span
+                              className="text-xs text-green-600 font-medium flex items-center gap-1 whitespace-nowrap px-2 py-1"
+                              data-testid={`prospecting-lead-saved-${biz.id}`}
+                            >
                               <CheckCircle2 size={13} />
                             </span>
                           ) : (
                             <button
                               onClick={() => handleAddLead(biz)}
                               className="text-xs text-blue-600 hover:text-blue-700 font-medium flex items-center gap-1 whitespace-nowrap transition-colors px-2 py-1 rounded hover:bg-blue-50"
+                              data-testid={`prospecting-add-lead-${biz.id}`}
                             >
                               <Plus size={13} />
                             </button>
