@@ -229,6 +229,7 @@ const AuditReportPage = () => {
     <button
       onClick={() => toggleSection(section)}
       className="w-full flex items-center justify-between p-4 hover:bg-gray-50 transition-colors rounded-t-lg"
+      data-testid={`audit-section-toggle-${section}`}
     >
       <div className="flex items-center gap-3">
         {Icon && <Icon size={20} className="text-blue-600" />}
