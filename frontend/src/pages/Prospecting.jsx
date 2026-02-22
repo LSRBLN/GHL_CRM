@@ -371,7 +371,11 @@ const Prospecting = () => {
               <p className="text-sm font-medium text-gray-800" data-testid="prospecting-results-summary">
                 Wählen Sie ein Unternehmen aus, um einen Marketing-Auditbericht zu erstellen
               </p>
-              <Badge variant="secondary" className="text-xs font-medium bg-blue-50 text-blue-700 border border-blue-200">
+              <Badge
+                variant="secondary"
+                className="text-xs font-medium bg-blue-50 text-blue-700 border border-blue-200"
+                data-testid="prospecting-results-count"
+              >
                 {businesses.length} Unternehmen
               </Badge>
               <Badge variant="secondary" className="text-xs font-medium bg-gray-100 text-gray-600 border border-gray-200">
