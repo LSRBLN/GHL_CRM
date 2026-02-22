@@ -1,38 +1,44 @@
-import { useEffect } from "react";
-import "@/App.css";
-import { BrowserRouter, Routes, Route } from "react-router-dom";
-import axios from "axios";
+import React, { useState } from "react";
+import "./App.css";
+import { BrowserRouter, Routes, Route, useLocation } from "react-router-dom";
+import Sidebar from "./components/layout/Sidebar";
+import Header from "./components/layout/Header";
+import Dashboard from "./pages/Dashboard";
+import Contacts from "./pages/Contacts";
+import Conversations from "./pages/Conversations";
+import Opportunities from "./pages/Opportunities";
+import CalendarPage from "./pages/CalendarPage";
+import Marketing from "./pages/Marketing";
+import Automation from "./pages/Automation";
+import Payments from "./pages/Payments";
+import Reporting from "./pages/Reporting";
+import {
+  Sites,
+  Reputation,
+  MediaStorage,
+  Memberships,
+  Marketplace,
+  SettingsPage,
+} from "./pages/PlaceholderPages";
 
-const BACKEND_URL = process.env.REACT_APP_BACKEND_URL;
-const API = `${BACKEND_URL}/api`;
+const Layout = ({ children }) => {
+  const [sidebarExpanded, setSidebarExpanded] = useState(false);
+  const location = useLocation();
 
-const Home = () => {
-  const helloWorldApi = async () => {
-    try {
-      const response = await axios.get(`${API}/`);
-      console.log(response.data.message);
-    } catch (e) {
-      console.error(e, `errored out requesting / api`);
-    }
-  };
-
-  useEffect(() => {
-    helloWorldApi();
-  }, []);
+  // Check if conversations page needs full width
+  const isFullWidth = location.pathname === "/conversations";
 
   return (
-    <div>
-      <header className="App-header">
-        <a
-          className="App-link"
-          href="https://emergent.sh"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          <img src="https://avatars.githubusercontent.com/in/1201222?s=120&u=2686cf91179bbafbc7a71bfbc43004cf9ae1acea&v=4" />
-        </a>
-        <p className="mt-5">Building something incredible ~!</p>
-      </header>
+    <div className="min-h-screen bg-[#F8F9FB]">
+      <Sidebar />
+      <Header sidebarExpanded={sidebarExpanded} />
+      <main
+        className={`pt-[56px] transition-all duration-200 ${
+          sidebarExpanded ? "ml-[220px]" : "ml-[60px]"
+        }`}
+      >
+        <div className={isFullWidth ? "p-0" : "p-6"}>{children}</div>
+      </main>
     </div>
   );
 };
@@ -41,11 +47,25 @@ function App() {
   return (
     <div className="App">
       <BrowserRouter>
-        <Routes>
-          <Route path="/" element={<Home />}>
-            <Route index element={<Home />} />
-          </Route>
-        </Routes>
+        <Layout>
+          <Routes>
+            <Route path="/" element={<Dashboard />} />
+            <Route path="/conversations" element={<Conversations />} />
+            <Route path="/calendars" element={<CalendarPage />} />
+            <Route path="/contacts" element={<Contacts />} />
+            <Route path="/opportunities" element={<Opportunities />} />
+            <Route path="/payments" element={<Payments />} />
+            <Route path="/marketing" element={<Marketing />} />
+            <Route path="/automation" element={<Automation />} />
+            <Route path="/sites" element={<Sites />} />
+            <Route path="/memberships" element={<Memberships />} />
+            <Route path="/media" element={<MediaStorage />} />
+            <Route path="/reputation" element={<Reputation />} />
+            <Route path="/reporting" element={<Reporting />} />
+            <Route path="/marketplace" element={<Marketplace />} />
+            <Route path="/settings" element={<SettingsPage />} />
+          </Routes>
+        </Layout>
       </BrowserRouter>
     </div>
   );
