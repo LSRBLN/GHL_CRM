@@ -235,12 +235,12 @@ const Prospecting = () => {
   return (
     <div className="space-y-4">
       {/* Page Header */}
-      cdive
-        ch1 className="text-xl font-bold text-gray-900" data-testid="prospecting-page-title"eMarketing-Audit-Berichtc/h1e
-        cp className="text-sm text-gray-500 mt-0.5" data-testid="prospecting-page-subtitle"e
+      <div>
+        <h1 className="text-xl font-bold text-gray-900" data-testid="prospecting-page-title">Marketing-Audit-Bericht</h1>
+        <p className="text-sm text-gray-500 mt-0.5" data-testid="prospecting-page-subtitle">
           Teilen Sie diesen Bericht mit Ihren Kunden, um Ihre Dienstleistungen zu verkaufen.
-        c/pe
-      c/dive
+        </p>
+      </div>
 
       {/* Search Form */}
       <Card className="border border-gray-200 shadow-sm">
