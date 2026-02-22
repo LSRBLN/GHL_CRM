@@ -4,9 +4,13 @@ import logging
 import random
 from typing import Optional
 from models import BusinessResult
+from dotenv import load_dotenv
+from pathlib import Path
 
 logger = logging.getLogger(__name__)
 
+# Load .env explicitly
+load_dotenv(Path(__file__).parent / '.env')
 GOOGLE_PLACES_API_KEY = os.environ.get('GOOGLE_PLACES_API_KEY', '')
 
 
