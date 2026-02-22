@@ -504,8 +504,11 @@ const Prospecting = () => {
                       </td>
                       <td className="px-4 py-4">
                         <div className="flex items-center gap-2">
-                          <span className="text-sm font-semibold text-gray-800">{biz.conversionRate}%</span>
-                          <span className={`text-[11px] px-2 py-0.5 rounded-full font-medium border ${getConversionColor(biz.conversionLabel)}`}>
+                          <span className="text-sm font-semibold text-gray-800" data-testid={`prospecting-conversion-rate-${biz.id}`}>{biz.conversionRate}%</span>
+                          <span
+                            className={`text-[11px] px-2 py-0.5 rounded-full font-medium border ${getConversionColor(biz.conversionLabel)}`}
+                            data-testid={`prospecting-conversion-label-${biz.id}`}
+                          >
                             {biz.conversionLabel}
                           </span>
                         </div>
