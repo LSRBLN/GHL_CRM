@@ -503,7 +503,7 @@ const AuditReportPage = () => {
               <div className="flex-1">
                 <p className="text-sm text-gray-600 mb-3">{report.listings.summary_text}</p>
                 <div className="grid grid-cols-3 gap-3">
-                  <div className="p-2 rounded bg-green-50 border border-green-200 text-center">
+                  <div className="p-2 rounded bg-green-50 border border-green-200 text-center" data-testid="audit-report-listings-exact">
                     <p className="text-lg font-bold text-green-700">{report.listings.exact_matches}</p>
                     <p className="text-[10px] text-green-600">Exakte Treffer</p>
                   </div>
