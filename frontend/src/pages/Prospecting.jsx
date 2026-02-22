@@ -378,7 +378,11 @@ const Prospecting = () => {
               >
                 {businesses.length} Unternehmen
               </Badge>
-              <Badge variant="secondary" className="text-xs font-medium bg-gray-100 text-gray-600 border border-gray-200">
+              <Badge
+                variant="secondary"
+                className="text-xs font-medium bg-gray-100 text-gray-600 border border-gray-200"
+                data-testid="prospecting-selected-count"
+              >
                 {selectedRows.length}/15 Zeilen ausgewählt
               </Badge>
             </div>
