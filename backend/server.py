@@ -9,6 +9,7 @@ from pydantic import BaseModel, Field, ConfigDict
 from typing import List
 import uuid
 from datetime import datetime, timezone
+from routes_prospecting import router as prospecting_router
 
 
 ROOT_DIR = Path(__file__).parent
