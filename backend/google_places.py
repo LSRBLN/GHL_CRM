@@ -49,7 +49,6 @@ async def search_google_places(keyword: str, location: str, radius: int = 5) -> 
             review_count = place.get("user_ratings_total", 0)
             lat = place.get("geometry", {}).get("location", {}).get("lat")
             lng = place.get("geometry", {}).get("location", {}).get("lng")
-            is_open = place.get("opening_hours", {}).get("open_now")
             types = place.get("types", [])
 
             # Get category from types
