@@ -11,7 +11,6 @@ logger = logging.getLogger(__name__)
 
 # Load .env explicitly
 load_dotenv(Path(__file__).parent / '.env')
-GOOGLE_PLACES_API_KEY = os.environ.get('GOOGLE_PLACES_API_KEY', '')
 
 
 async def search_google_places(keyword: str, location: str, radius: int = 5) -> list:
