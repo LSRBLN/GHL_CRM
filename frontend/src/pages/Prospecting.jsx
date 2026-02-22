@@ -520,10 +520,10 @@ const Prospecting = () => {
                       </td>
                       <td className="px-4 py-4">
                         <div className="flex items-center gap-1.5">
-                          <span className="text-sm font-semibold text-gray-800">{biz.rating}</span>
+                          <span className="text-sm font-semibold text-gray-800" data-testid={`prospecting-rating-${biz.id}`}>{biz.rating}</span>
                           <StarRating rating={biz.rating} />
                         </div>
-                        <p className="text-xs text-gray-500 mt-0.5">{biz.reviewCount} Bewertungen</p>
+                        <p className="text-xs text-gray-500 mt-0.5" data-testid={`prospecting-review-count-${biz.id}`}>{biz.reviewCount} Bewertungen</p>
                       </td>
                       <td className="px-4 py-4">
                         <span className={`text-sm ${
