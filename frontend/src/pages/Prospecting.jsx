@@ -536,7 +536,10 @@ const Prospecting = () => {
                         </span>
                       </td>
                       <td className="px-4 py-4">
-                        <span className="text-xs px-2.5 py-1 rounded-full bg-gray-100 text-gray-600 font-medium border border-gray-200 whitespace-nowrap">
+                        <span
+                          className="text-xs px-2.5 py-1 rounded-full bg-gray-100 text-gray-600 font-medium border border-gray-200 whitespace-nowrap"
+                          data-testid={`prospecting-status-${biz.id}`}
+                        >
                           {biz.status}
                         </span>
                       </td>
