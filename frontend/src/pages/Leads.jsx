@@ -105,7 +105,6 @@ const Leads = () => {
         email: res.data.email || '',
         status: res.data.status || 'New',
         tags: (res.data.tags || []).join(', '),
-        notes: res.data.notes || '',
       });
     } catch (err) {
       console.error('Contact detail error:', err);
