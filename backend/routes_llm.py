@@ -6,6 +6,8 @@ from datetime import datetime
 
 from fastapi import APIRouter, HTTPException
 from motor.motor_asyncio import AsyncIOMotorClient
+from dotenv import load_dotenv
+from pathlib import Path
 from emergentintegrations.llm.chat import LlmChat, UserMessage
 
 logger = logging.getLogger(__name__)
