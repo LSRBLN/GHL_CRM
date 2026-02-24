@@ -129,7 +129,12 @@ async def generate_audit_report(place_id: str = Query(...), category: Optional[s
         )
     except Exception as exc:
         logger.warning("SEO-Analyse fehlgeschlagen: %s", exc)
-        seo_data = SEOAnalysis(score=0, avg_ranking="Nicht verfügbar", competitors=[], keyword_used=business_name)
+        seo_data = SEOAnalysis(
+            score=0,
+            avg_ranking="Nicht verfügbar",
+            competitors=[],
+            keyword_used=business_name.split()[0] if business_name else "Business",
+        )
 
     report = build_audit_report(
         business_name=business_name,
