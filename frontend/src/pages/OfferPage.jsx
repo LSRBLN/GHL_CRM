@@ -110,9 +110,10 @@ const OfferPage = () => {
             phone: searchParams.get('phone') || '',
             website: searchParams.get('website') || '',
             rating: parseFloat(searchParams.get('rating') || '0'),
-            review_count: parseInt(searchParams.get('reviews') || '0'),
-            overall_score: parseInt(searchParams.get('score') || '50'),
+            review_count: parseInt(searchParams.get('reviews') || '0', 10),
+            overall_score: parseInt(searchParams.get('score') || '50', 10),
             report_id: searchParams.get('report_id') || null,
+            lead_id: searchParams.get('contact_id') || null,
           });
           setOffer(res.data);
         } catch (err) {
