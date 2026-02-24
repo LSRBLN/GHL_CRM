@@ -228,8 +228,8 @@ def build_listings() -> ListingsAnalysis:
         no_matches=0,
         details=[],
         summary_text=(
-            "Externe Branchenverzeichnisse wurden nicht geprüft."
-            " Eine Prüfung ist wichtig, um Inkonsistenzen zu vermeiden."
+            "Branchenverzeichnisse wurden nicht geprüft. Uneinheitliche Einträge führen häufig zu weniger "
+            "Sichtbarkeit und Anrufen. Eine Konsistenzprüfung kann hier schnell Wirkung zeigen."
         ),
     )
 
