@@ -33,6 +33,8 @@ async def create_or_update_contact(place_payload: dict, category: Optional[str],
     existing = await db.contacts.find_one({"google_place_id": place_id})
     tags = list({tag, *(existing.get("tags") or [])}) if existing else [tag]
 
+    category_value = category if category is not None else (existing.get("category") if existing else None)
+
     contact = {
         "id": existing.get("id") if existing else str(uuid.uuid4()),
         "google_place_id": place_id,
@@ -43,7 +45,7 @@ async def create_or_update_contact(place_payload: dict, category: Optional[str],
         "website": result.get("website"),
         "rating": float(result.get("rating") or 0.0),
         "review_count": int(result.get("user_ratings_total") or 0),
-        "category": category or existing.get("category") if existing else category,
+        "category": category_value,
         "tags": tags,
         "status": existing.get("status") if existing else status,
         "score": calculate_contact_score(
