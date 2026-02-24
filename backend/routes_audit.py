@@ -25,6 +25,9 @@ from models import SEOAnalysis
 
 logger = logging.getLogger(__name__)
 
+ROOT_DIR = Path(__file__).parent
+load_dotenv(ROOT_DIR / '.env')
+
 router = APIRouter(prefix="/api/audit", tags=["audit"])
 
 mongo_url = os.environ["MONGO_URL"]
