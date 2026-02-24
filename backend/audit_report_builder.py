@@ -49,27 +49,34 @@ def calculate_contact_score(rating: float, review_count: int, has_website: bool)
 def build_critical_info(phone: Optional[str], has_website: bool, chat_widget: bool, review_response_rate: int) -> CriticalInfo:
     sms_enabled = bool(phone)
     sms_text = (
-        "Ihre Rufnummer ist SMS-fähig. Nutzen Sie das für schnelle Termin- und Angebotskommunikation."
+        "Ihre Rufnummer ist SMS-fähig – das reduziert Reibung bei kurzfristigen Anfragen. "
+        "Schon eine schnelle Rückmeldung kann aus einem Interessenten einen Termin machen."
         if sms_enabled
-        else "Keine SMS-fähige Rufnummer gefunden. Dadurch verlieren Sie spontane Kontaktchancen."
+        else "Keine SMS-fähige Rufnummer gefunden. Wenn Interessenten nicht sofort antworten können, "
+        "bricht der Kontakt häufig ab. Eine SMS-Option kann diese Lücke schließen."
     )
 
     hosting_text = (
-        "Website erkannt. Ohne direkten Zugriff lässt sich das Hosting nicht sicher bestimmen."
+        "Website erkannt. Ohne direkten Zugriff lässt sich das Hosting nicht sicher bestimmen. "
+        "Mit einer kurzen Technikprüfung lassen sich Ladezeit und Stabilität absichern."
         if has_website
-        else "Keine Website gefunden – dadurch fehlen wichtige Conversion-Punkte und Vertrauen."
+        else "Keine Website gefunden. Damit fehlt ein zentraler Vertrauensanker – viele Kunden prüfen online, "
+        "bevor sie anrufen. Eine einfache Website schafft hier schnell Abhilfe."
     )
 
     chat_widget_text = (
-        "Ein Chat-Widget wurde erkannt – gut für schnelle Kundenanfragen."
+        "Ein Chat-Widget wurde erkannt – gut für schnelle Kundenanfragen. "
+        "Mit klaren Antworten kann daraus direkt ein Termin entstehen."
         if chat_widget
-        else "Kein Chat-Widget erkannt. Hier bleiben wertvolle Besucheranfragen ungenutzt."
+        else "Kein Chat-Widget erkannt. Besucher mit Fragen springen oft ab, wenn sie niemanden erreichen. "
+        "Ein Chat kann diese Verluste messbar reduzieren."
     )
 
     review_response_text = (
-        f"Aktuelle Antwortquote: {review_response_rate}%. Jede unbeantwortete Rezension kostet Vertrauen."
+        f"Aktuelle Antwortquote: {review_response_rate}%. Jede unbeantwortete Rezension bleibt sichtbar "
+        "und beeinflusst die Entscheidung neuer Kunden. Eine klare Antwortstrategie erhöht Vertrauen."
         if review_response_rate > 0
-        else "Keine Antwortdaten verfügbar – aktives Reagieren steigert Vertrauen messbar."
+        else "Keine Antwortdaten verfügbar. Aktives Antworten erhöht Vertrauen – besonders bei kritischen Bewertungen."
     )
 
     return CriticalInfo(
