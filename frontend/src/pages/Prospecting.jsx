@@ -589,14 +589,21 @@ const Prospecting = () => {
                               data-testid={`prospecting-lead-saved-${biz.id}`}
                             >
                               <CheckCircle2 size={13} />
+                              Hinzugefügt
                             </span>
                           ) : (
                             <button
                               onClick={() => handleAddLead(biz)}
-                              className="text-xs text-blue-600 hover:text-blue-700 font-medium flex items-center gap-1 whitespace-nowrap transition-colors px-2 py-1 rounded hover:bg-blue-50"
+                              className="text-xs text-blue-600 hover:text-blue-700 font-medium flex items-center gap-1 whitespace-nowrap transition-colors px-2 py-1 rounded hover:bg-blue-50 disabled:opacity-60"
                               data-testid={`prospecting-add-lead-${biz.id}`}
+                              disabled={addressLoadingId === biz.id}
                             >
-                              <Plus size={13} />
+                              {addressLoadingId === biz.id ? (
+                                <span className="w-3 h-3 border border-blue-600 border-t-transparent rounded-full animate-spin" />
+                              ) : (
+                                <Plus size={13} />
+                              )}
+                              {addressLoadingId === biz.id ? 'Wird hinzugefügt' : 'Zum Adressbuch hinzufügen'}
                             </button>
                           )}
                         </div>
