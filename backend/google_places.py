@@ -79,8 +79,15 @@ async def search_google_places(keyword: str, location: str, radius: int = 5) -> 
             # Calculate conversion rate
             conv_rate, conv_label = _calc_conversion(rating, review_count, has_website)
 
-            # Try to get details for phone/website
-            phone, website = await _get_place_details(place_id)
+            phone = None
+            website = None
+            try:
+                details_payload = await fetch_place_details(place_id)
+                result_details = details_payload.get("result", {})
+                phone = result_details.get("formatted_phone_number")
+                website = result_details.get("website")
+            except Exception as e:
+                logger.warning(f"Place details error for {place_id}: {e}")
 
             biz = BusinessResult(
                 id=place_id,
