@@ -14,6 +14,9 @@ from audit_report_builder import calculate_contact_score
 
 logger = logging.getLogger(__name__)
 
+ROOT_DIR = Path(__file__).parent
+load_dotenv(ROOT_DIR / '.env')
+
 router = APIRouter(prefix="/api/contacts", tags=["contacts"])
 
 mongo_url = os.environ["MONGO_URL"]
