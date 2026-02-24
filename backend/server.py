@@ -25,6 +25,10 @@ app = FastAPI()
 
 # Include the router in the main app
 app.include_router(prospecting_router)
+app.include_router(audit_router)
+app.include_router(contacts_router)
+app.include_router(email_router)
+app.include_router(llm_router)
 
 app.add_middleware(
     CORSMiddleware,
