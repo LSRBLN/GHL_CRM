@@ -236,6 +236,8 @@ const OfferPage = () => {
       const res = await axios.post(`${API}/llm/optimize`, {
         subject: emailSubject,
         html: emailHtml,
+        provider: 'anthropic',
+        model: 'claude-sonnet-4-5-20250929',
       });
       setEmailSubject(res.data.subject || emailSubject);
       setEmailHtml(res.data.html || emailHtml);
