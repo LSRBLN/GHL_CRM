@@ -562,12 +562,17 @@ const Prospecting = () => {
                         <div className="flex items-center gap-2">
                           <button
                             onClick={() => handleViewReport(biz)}
-                            className="text-xs text-gray-600 hover:text-blue-600 font-medium flex items-center gap-1 whitespace-nowrap transition-colors px-2 py-1 rounded hover:bg-blue-50"
+                            className="text-xs text-gray-600 hover:text-blue-600 font-medium flex items-center gap-1 whitespace-nowrap transition-colors px-2 py-1 rounded hover:bg-blue-50 disabled:opacity-60"
                             title="Audit-Bericht anzeigen"
                             data-testid={`prospecting-view-report-${biz.id}`}
+                            disabled={reportLoadingId === biz.id}
                           >
-                            <Eye size={13} />
-                            Bericht
+                            {reportLoadingId === biz.id ? (
+                              <span className="w-3 h-3 border border-blue-600 border-t-transparent rounded-full animate-spin" />
+                            ) : (
+                              <Eye size={13} />
+                            )}
+                            {reportLoadingId === biz.id ? 'Wird erstellt' : 'Bericht'}
                           </button>
                           <button
                             onClick={() => handleCreateOffer(biz)}
