@@ -5,6 +5,8 @@ from typing import Optional, List
 
 from fastapi import APIRouter, HTTPException, Query
 from motor.motor_asyncio import AsyncIOMotorClient
+from dotenv import load_dotenv
+from pathlib import Path
 import os
 
 from google_places import fetch_place_details
