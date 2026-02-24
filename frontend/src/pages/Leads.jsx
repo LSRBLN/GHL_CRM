@@ -68,7 +68,6 @@ const Leads = () => {
     email: '',
     status: 'New',
     tags: '',
-    notes: '',
   });
 
   const fetchContacts = async ({ nextPage = page, nextSearch = searchQuery, nextStatus = statusFilter } = {}) => {
