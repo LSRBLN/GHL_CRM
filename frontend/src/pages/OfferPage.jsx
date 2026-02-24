@@ -299,11 +299,13 @@ const OfferPage = () => {
               Maßgeschneidertes Marketing-Paket
             </h1>
             <p className="text-gray-400 text-base">
-              für <span className="text-white font-semibold">{offer.business_name}</span>
+              für <span className="text-white font-semibold" data-testid="offer-business-name">{offer.business_name}</span>
             </p>
             <div className="flex items-center gap-4 mt-4 text-sm text-gray-400">
-              <span className="flex items-center gap-1"><MapPin size={12} /> {offer.address}</span>
-              {offer.phone && <span className="flex items-center gap-1"><Phone size={12} /> {offer.phone}</span>}
+              <span className="flex items-center gap-1" data-testid="offer-business-address"><MapPin size={12} /> {offer.address}</span>
+              {offer.phone && (
+                <span className="flex items-center gap-1" data-testid="offer-business-phone"><Phone size={12} /> {offer.phone}</span>
+              )}
             </div>
           </div>
         </div>
