@@ -181,21 +181,18 @@ const Prospecting = () => {
   };
 
   const handleAddLead = async (biz) => {
+    setActionError(null);
+    setAddressLoadingId(biz.id);
     try {
-      await axios.post(`${API}/prospecting/leads`, {
-        name: biz.name,
-        address: biz.address,
-        phone: biz.phone,
-        website: biz.website,
-        rating: biz.rating,
-        review_count: biz.reviewCount || biz.review_count || 0,
-        category: biz.category,
-        conversion_rate: biz.conversionRate || biz.conversion_rate || 50,
-        online_presence: biz.onlinePresence || biz.online_presence || {},
+      await axios.post(`${API}/contacts/add`, null, {
+        params: { place_id: biz.id, category: biz.category || '' },
       });
       setSavedLeads((prev) => new Set([...prev, biz.id]));
     } catch (err) {
       console.error('Save lead error:', err);
+      setActionError('Kontakt konnte nicht hinzugefügt werden.');
+    } finally {
+      setAddressLoadingId(null);
     }
   };
 
