@@ -1,5 +1,4 @@
 import logging
-import re
 from datetime import datetime
 from typing import Any, Dict, List, Optional, Tuple
 from urllib.parse import urlparse
@@ -12,7 +11,6 @@ from models import (
     TechStackItem,
     GoogleProfile,
     ListingsAnalysis,
-    ListingEntry,
     ReputationAnalysis,
     WebsitePerformance,
     SEOAnalysis,
