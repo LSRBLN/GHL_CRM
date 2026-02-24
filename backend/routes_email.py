@@ -97,7 +97,9 @@ async def send_offer_email(payload: dict):
         report = await db.reports.find_one({"id": report_id}, {"_id": 0})
         if not report:
             raise HTTPException(status_code=404, detail="Bericht nicht gefunden")
-        report_html = build_report_html(report)
+        report_payload = {k: v for k, v in report.items() if k in AuditReport.model_fields}
+        report_model = AuditReport(**report_payload)
+        report_html = build_report_html(report_model)
         pdf_bytes = await generate_pdf_from_html(report_html)
         attachments.append({
             "filename": "audit-report.pdf",
