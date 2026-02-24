@@ -389,7 +389,7 @@ const OfferPage = () => {
             <div className="flex items-center justify-between">
               <div className="text-center flex-1">
                 <p className="text-xs text-gray-500 mb-1">Aktueller Score</p>
-                <p className="text-3xl font-bold text-red-500">{offer.overall_score}%</p>
+                <p className="text-3xl font-bold text-red-500" data-testid="offer-current-score">{offer.overall_score}%</p>
               </div>
               <div className="flex items-center gap-2 px-4">
                 <ChevronRight size={20} className="text-gray-300" />
