@@ -177,8 +177,78 @@ const OfferPage = () => {
   }
 
   const totalSavings = offer.total_price - (offer.discount_price || offer.total_price);
+  const contactId = searchParams.get('contact_id');
+  const reportId = searchParams.get('report_id');
 
-  return (
+  const handleTemplateUpload = async (event) => {
+    const file = event.target.files[0];
+    if (!file) return;
+    setUploadingTemplate(true);
+    setEmailError(null);
+    try {
+      const formData = new FormData();
+      formData.append('file', file);
+      const res = await axios.post(`${API}/email/templates/upload`, formData, {
+        headers: { 'Content-Type': 'multipart/form-data' },
+      });
+      setEmailTemplates((prev) => [res.data, ...prev]);
+      setSelectedTemplateId(res.data.id);
+    } catch (err) {
+      console.error('Template upload error:', err);
+      setEmailError('Template konnte nicht hochgeladen werden.');
+    } finally {
+      setUploadingTemplate(false);
+      event.target.value = '';
+    }
+  };
+
+  const handleOptimizeEmail = async () => {
+    if (!emailSubject || !emailHtml) {
+      setEmailError('Betreff und HTML müssen gefüllt sein.');
+      return;
+    }
+    setOptimizingEmail(true);
+    setEmailError(null);
+    try {
+      const res = await axios.post(`${API}/llm/optimize`, {
+        subject: emailSubject,
+        html: emailHtml,
+      });
+      setEmailSubject(res.data.subject || emailSubject);
+      setEmailHtml(res.data.html || emailHtml);
+    } catch (err) {
+      console.error('Optimize error:', err);
+      setEmailError('Optimierung fehlgeschlagen.');
+    } finally {
+      setOptimizingEmail(false);
+    }
+  };
+
+  const handleSendEmail = async () => {
+    if (!emailTo || !emailSubject || !emailHtml) {
+      setEmailError('Bitte Empfänger, Betreff und Inhalt ausfüllen.');
+      return;
+    }
+    setSendingEmail(true);
+    setEmailError(null);
+    setEmailSuccess(null);
+    try {
+      await axios.post(`${API}/email/send-offer`, {
+        to_email: emailTo,
+        subject: emailSubject,
+        html: emailHtml,
+        contact_id: contactId || null,
+        report_id: reportId || offer.report_id || null,
+        attach_report_pdf: attachPdf,
+      });
+      setEmailSuccess('E-Mail wurde gesendet.');
+    } catch (err) {
+      console.error('Send email error:', err);
+      setEmailError('E-Mail konnte nicht gesendet werden.');
+    } finally {
+      setSendingEmail(false);
+    }
+  };
     <div className="max-w-4xl mx-auto space-y-6 pb-10">
       {/* Header Actions */}
       <div className="flex items-center justify-between">
