@@ -196,16 +196,31 @@ const Prospecting = () => {
     }
   };
 
-  const handleViewReport = (biz) => {
-    const params = new URLSearchParams({
-      name: biz.name,
-      address: biz.address,
-      phone: biz.phone || '',
-      website: biz.website || '',
-      rating: biz.rating.toString(),
-      reviews: (biz.reviewCount || biz.review_count || 0).toString(),
-    });
-    navigate(`/report?${params.toString()}`);
+  const handleViewReport = async (biz) => {
+    setActionError(null);
+    setReportLoadingId(biz.id);
+    try {
+      const res = await axios.post(`${API}/audit/generate`, null, {
+        params: { place_id: biz.id, category: biz.category || '' },
+      });
+      const params = new URLSearchParams({
+        name: res.data.offer_params.name,
+        address: res.data.offer_params.address,
+        phone: res.data.offer_params.phone || '',
+        website: res.data.offer_params.website || '',
+        rating: res.data.offer_params.rating.toString(),
+        reviews: res.data.offer_params.reviews.toString(),
+        score: res.data.offer_params.score.toString(),
+        report_id: res.data.offer_params.report_id || '',
+        contact_id: res.data.offer_params.contact_id || '',
+      });
+      navigate(`/offer?${params.toString()}`);
+    } catch (err) {
+      console.error('Report generation error:', err);
+      setActionError('Bericht konnte nicht erstellt werden.');
+    } finally {
+      setReportLoadingId(null);
+    }
   };
 
   const handleCreateOffer = (biz) => {
