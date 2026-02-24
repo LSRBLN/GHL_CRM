@@ -183,11 +183,18 @@ async def create_offer(offer_data: OfferCreate):
     try:
         # Try to fetch the audit report if report_id is provided
         audit_report = None
+        contact_id = offer_data.lead_id
         if offer_data.report_id:
-            report = await db.audit_reports.find_one({"id": offer_data.report_id})
+            report = await db.reports.find_one({"id": offer_data.report_id})
             if report:
                 report.pop("_id", None)
                 audit_report = report
+                contact_id = contact_id or report.get("contact_id")
+            else:
+                legacy = await db.audit_reports.find_one({"id": offer_data.report_id})
+                if legacy:
+                    legacy.pop("_id", None)
+                    audit_report = legacy
 
         offer = generate_offer(
             business_name=offer_data.business_name,
@@ -197,7 +204,7 @@ async def create_offer(offer_data: OfferCreate):
             rating=offer_data.rating,
             review_count=offer_data.review_count,
             overall_score=offer_data.overall_score,
-            lead_id=offer_data.lead_id,
+            lead_id=contact_id or offer_data.lead_id,
             report_id=offer_data.report_id,
             audit_report=audit_report,
             custom_services=offer_data.custom_services,
@@ -208,6 +215,23 @@ async def create_offer(offer_data: OfferCreate):
         offer_dict["created_at"] = datetime.utcnow()
         await db.offers.insert_one(offer_dict)
         offer_dict.pop("_id", None)
+
+        if contact_id:
+            timeline_entry = {
+                "id": str(uuid.uuid4()),
+                "type": "offer",
+                "title": "Angebot erstellt",
+                "details": "Ein Angebot wurde für den Kontakt erstellt.",
+                "created_at": datetime.utcnow(),
+                "offer_id": offer_dict.get("id"),
+            }
+            await db.contacts.update_one(
+                {"id": contact_id},
+                {
+                    "$push": {"timeline": timeline_entry},
+                    "$set": {"last_activity": datetime.utcnow(), "updated_at": datetime.utcnow()},
+                },
+            )
 
         return offer_dict
     except Exception as e:
