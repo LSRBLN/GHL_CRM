@@ -604,7 +604,7 @@ const OfferPage = () => {
                   </SelectTrigger>
                   <SelectContent>
                     {emailTemplates.map((template) => (
-                      <SelectItem key={template.id} value={template.id}>
+                      <SelectItem key={template.id} value={template.id} data-testid={`offer-email-template-option-${template.id}`}>
                         {template.name}
                       </SelectItem>
                     ))}
