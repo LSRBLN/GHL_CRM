@@ -323,7 +323,7 @@ const OfferPage = () => {
           </div>
           <div className="text-right">
             <p className="text-xs text-gray-500">Gültig bis</p>
-            <p className="text-sm font-semibold text-gray-900">{offer.valid_until}</p>
+            <p className="text-sm font-semibold text-gray-900" data-testid="offer-valid-until">{offer.valid_until}</p>
           </div>
         </div>
       </Card>
