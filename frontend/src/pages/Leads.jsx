@@ -304,7 +304,13 @@ const Leads = () => {
                           </SelectTrigger>
                           <SelectContent>
                             {statusStages.map((stage) => (
-                              <SelectItem key={stage} value={stage}>{stage}</SelectItem>
+                              <SelectItem
+                                key={stage}
+                                value={stage}
+                                data-testid={`leads-status-option-${contact.id}-${stage}`}
+                              >
+                                {stage}
+                              </SelectItem>
                             ))}
                           </SelectContent>
                         </Select>
