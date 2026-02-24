@@ -112,37 +112,36 @@ async def search_google_places(keyword: str, location: str, radius: int = 5) -> 
         return []
 
 
-async def _get_place_details(place_id: str) -> tuple:
-    """Get phone and website from Place Details API."""
+async def fetch_place_details(place_id: str) -> dict:
     api_key = os.environ.get("GOOGLE_PLACES_API_KEY")
     if not place_id:
-        return None, None
+        raise ValueError("place_id fehlt")
     if not api_key:
         raise ValueError("GOOGLE_PLACES_API_KEY ist nicht konfiguriert")
 
-    try:
-        url = "https://maps.googleapis.com/maps/api/place/details/json"
-        params = {
-            "place_id": place_id,
-            "fields": "formatted_phone_number,website",
-            "language": "de",
-            "key": api_key,
-        }
+    url = "https://maps.googleapis.com/maps/api/place/details/json"
+    params = {
+        "place_id": place_id,
+        "fields": (
+            "name,formatted_address,formatted_phone_number,international_phone_number,"
+            "website,rating,user_ratings_total,reviews,types,opening_hours,photos,"
+            "place_id,geometry,business_status,price_level,url,adr_address,"
+            "utc_offset,editorial_summary"
+        ),
+        "language": "de",
+        "key": api_key,
+    }
 
-        async with httpx.AsyncClient(timeout=10.0) as client:
-            response = await client.get(url, params=params)
-            data = response.json()
+    async with httpx.AsyncClient(timeout=15.0) as client:
+        response = await client.get(url, params=params)
+        data = response.json()
 
-        if data.get("status") == "OK":
-            result = data.get("result", {})
-            phone = result.get("formatted_phone_number")
-            website = result.get("website")
-            return phone, website
+    if data.get("status") != "OK":
+        logger.error(f"Google Places Details error: {data.get('status')} - {data.get('error_message', '')}")
+        raise ValueError("Google Places Details Anfrage fehlgeschlagen")
 
-    except Exception as e:
-        logger.warning(f"Place details error for {place_id}: {e}")
+    return data
 
-    return None, None
 
 
 def _calc_conversion(rating: float, review_count: int, has_website: bool) -> tuple:
