@@ -76,6 +76,18 @@ const OfferPage = () => {
   const [offer, setOffer] = useState(null);
   const [loading, setLoading] = useState(true);
   const [error, setError] = useState(null);
+  const [emailModalOpen, setEmailModalOpen] = useState(false);
+  const [emailSubject, setEmailSubject] = useState('');
+  const [emailTo, setEmailTo] = useState('');
+  const [emailHtml, setEmailHtml] = useState('');
+  const [emailTemplates, setEmailTemplates] = useState([]);
+  const [selectedTemplateId, setSelectedTemplateId] = useState('');
+  const [uploadingTemplate, setUploadingTemplate] = useState(false);
+  const [optimizingEmail, setOptimizingEmail] = useState(false);
+  const [sendingEmail, setSendingEmail] = useState(false);
+  const [attachPdf, setAttachPdf] = useState(false);
+  const [emailError, setEmailError] = useState(null);
+  const [emailSuccess, setEmailSuccess] = useState(null);
 
   useEffect(() => {
     const fetchOffer = async () => {
