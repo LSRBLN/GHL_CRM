@@ -88,6 +88,7 @@ const OfferPage = () => {
   const [attachPdf, setAttachPdf] = useState(false);
   const [emailError, setEmailError] = useState(null);
   const [emailSuccess, setEmailSuccess] = useState(null);
+  const fileInputRef = useRef(null);
 
   useEffect(() => {
     const fetchOffer = async () => {
