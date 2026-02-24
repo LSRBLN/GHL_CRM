@@ -352,7 +352,18 @@ def parse_review_response_rate(details: Dict[str, Any]) -> int:
 
 
 def build_report_html(report: AuditReport) -> str:
-    return f"""
+    tech_rows = "".join(
+        [
+            "<tr><td>{name}</td><td>{status}</td><td>{desc}</td></tr>".format(
+                name=t.name,
+                status="Erkannt" if t.detected else "Nicht erkannt",
+                desc=t.description,
+            )
+            for t in report.tech_stack
+        ]
+    )
+
+    template = """
     <html>
       <head>
         <meta charset='utf-8' />
@@ -367,16 +378,16 @@ def build_report_html(report: AuditReport) -> str:
       </head>
       <body>
         <h1>Marketing-Audit-Bericht</h1>
-        <p><strong>Unternehmen:</strong> {report.business_name}</p>
-        <p><strong>Adresse:</strong> {report.address}</p>
-        <p><strong>Gesamtscore:</strong> {report.overall_score}%</p>
+        <p><strong>Unternehmen:</strong> {business_name}</p>
+        <p><strong>Adresse:</strong> {address}</p>
+        <p><strong>Gesamtscore:</strong> {overall_score}%</p>
 
         <div class="section">
           <h2>Kritische Infos</h2>
-          <p>{report.critical_info.sms_text}</p>
-          <p>{report.critical_info.hosting_text}</p>
-          <p>{report.critical_info.chat_widget_text}</p>
-          <p>{report.critical_info.review_response_text}</p>
+          <p>{sms_text}</p>
+          <p>{hosting_text}</p>
+          <p>{chat_text}</p>
+          <p>{review_text}</p>
         </div>
 
         <div class="section">
@@ -384,42 +395,63 @@ def build_report_html(report: AuditReport) -> str:
           <table>
             <thead><tr><th>Tool</th><th>Status</th><th>Hinweis</th></tr></thead>
             <tbody>
-              {''.join([f"<tr><td>{t.name}</td><td>{'Erkannt' if t.detected else 'Nicht erkannt'}</td><td>{t.description}</td></tr>" for t in report.tech_stack])}
+              {tech_rows}
             </tbody>
           </table>
         </div>
 
         <div class="section">
           <h2>Google-Profil</h2>
-          <p>Score: {report.google_profile.score}%</p>
-          <p>Bewertung: {report.rating} ({report.review_count} Rezensionen)</p>
+          <p>Score: {google_score}%</p>
+          <p>Bewertung: {rating} ({review_count} Rezensionen)</p>
         </div>
 
         <div class="section">
           <h2>Einträge</h2>
-          <p>{report.listings.summary_text}</p>
+          <p>{listings_summary}</p>
         </div>
 
         <div class="section">
           <h2>Reputation</h2>
-          <p>GMB Score: {report.reputation.score}%</p>
-          <p>Analysierte Bewertungen: {report.reputation.total_reviews_analyzed}</p>
+          <p>GMB Score: {reputation_score}%</p>
+          <p>Analysierte Bewertungen: {reviews_analyzed}</p>
         </div>
 
         <div class="section">
           <h2>Website-Performance</h2>
-          <p>Score: {report.website_performance.score}%</p>
-          <p>Ladezeit: {report.website_performance.mobile_speed}s</p>
+          <p>Score: {website_score}%</p>
+          <p>Ladezeit: {website_speed}s</p>
         </div>
 
         <div class="section">
           <h2>SEO</h2>
-          <p>Score: {report.seo.score}%</p>
-          <p>Durchschnittliches Ranking: {report.seo.avg_ranking}</p>
+          <p>Score: {seo_score}%</p>
+          <p>Durchschnittliches Ranking: {seo_rank}</p>
         </div>
       </body>
     </html>
     """
+
+    return template.format(
+        business_name=report.business_name,
+        address=report.address,
+        overall_score=report.overall_score,
+        sms_text=report.critical_info.sms_text,
+        hosting_text=report.critical_info.hosting_text,
+        chat_text=report.critical_info.chat_widget_text,
+        review_text=report.critical_info.review_response_text,
+        tech_rows=tech_rows,
+        google_score=report.google_profile.score,
+        rating=report.rating,
+        review_count=report.review_count,
+        listings_summary=report.listings.summary_text,
+        reputation_score=report.reputation.score,
+        reviews_analyzed=report.reputation.total_reviews_analyzed,
+        website_score=report.website_performance.score,
+        website_speed=report.website_performance.mobile_speed,
+        seo_score=report.seo.score,
+        seo_rank=report.seo.avg_ranking,
+    )
 
 
 def build_audit_report(
