@@ -252,7 +252,13 @@ const OfferPage = () => {
     <div className="max-w-4xl mx-auto space-y-6 pb-10">
       {/* Header Actions */}
       <div className="flex items-center justify-between">
-        <Button variant="outline" size="sm" onClick={() => navigate(-1)} className="gap-1.5">
+        <Button
+          variant="outline"
+          size="sm"
+          onClick={() => navigate(-1)}
+          className="gap-1.5"
+          data-testid="offer-back-button"
+        >
           <ArrowLeft size={14} />
           Zurück
         </Button>
