@@ -6,6 +6,10 @@ import os
 import logging
 from pathlib import Path
 from routes_prospecting import router as prospecting_router
+from routes_audit import router as audit_router
+from routes_contacts import router as contacts_router
+from routes_email import router as email_router
+from routes_llm import router as llm_router
 
 
 ROOT_DIR = Path(__file__).parent
