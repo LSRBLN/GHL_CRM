@@ -371,6 +371,15 @@ const Prospecting = () => {
             </div>
           )}
 
+          {actionError && (
+            <div
+              className="mt-3 text-sm text-red-600 bg-red-50 border border-red-200 rounded-lg px-3 py-2"
+              data-testid="prospecting-action-error"
+            >
+              {actionError}
+            </div>
+          )}
+
           {!searchError && businesses.length === 0 && (
             <div
               className="mt-3 text-sm text-gray-500 bg-gray-50 border border-gray-200 rounded-lg px-3 py-2"
