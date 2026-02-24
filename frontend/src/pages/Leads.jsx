@@ -231,9 +231,11 @@ const Leads = () => {
                 <SelectValue placeholder="Status" />
               </SelectTrigger>
               <SelectContent>
-                <SelectItem value="all">Alle Status</SelectItem>
+                <SelectItem value="all" data-testid="leads-status-filter-all">Alle Status</SelectItem>
                 {statusStages.map((stage) => (
-                  <SelectItem key={stage} value={stage}>{stage}</SelectItem>
+                  <SelectItem key={stage} value={stage} data-testid={`leads-status-filter-${stage}`}>
+                    {stage}
+                  </SelectItem>
                 ))}
               </SelectContent>
             </Select>
