@@ -124,6 +124,35 @@ const OfferPage = () => {
     fetchOffer();
   }, [searchParams]);
 
+  useEffect(() => {
+    if (!offer) return;
+    setEmailSubject((prev) => prev || `Angebot für ${offer.business_name}`);
+    const paramEmail = searchParams.get('email') || '';
+    setEmailTo((prev) => prev || paramEmail);
+  }, [offer, searchParams]);
+
+  useEffect(() => {
+    if (!emailModalOpen) return;
+    const fetchTemplates = async () => {
+      try {
+        const res = await axios.get(`${API}/email/templates`);
+        setEmailTemplates(res.data.templates || []);
+      } catch (err) {
+        console.error('Template fetch error:', err);
+      }
+    };
+    fetchTemplates();
+  }, [emailModalOpen]);
+
+  useEffect(() => {
+    if (!selectedTemplateId) return;
+    const template = emailTemplates.find((t) => t.id === selectedTemplateId);
+    if (template) {
+      setEmailSubject(template.subject || emailSubject);
+      setEmailHtml(template.html || '');
+    }
+  }, [selectedTemplateId, emailTemplates]);
+
   if (loading) {
     return (
       <div className="flex items-center justify-center py-20">
