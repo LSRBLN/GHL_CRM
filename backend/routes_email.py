@@ -10,6 +10,8 @@ from typing import Optional
 import resend
 from fastapi import APIRouter, HTTPException, UploadFile, File
 from motor.motor_asyncio import AsyncIOMotorClient
+from dotenv import load_dotenv
+from pathlib import Path
 
 from audit_report_builder import build_report_html
 from pdf_generator import generate_pdf_from_html
