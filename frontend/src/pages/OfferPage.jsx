@@ -350,6 +350,7 @@ const OfferPage = () => {
               <div
                 key={idx}
                 className={`p-4 rounded-lg border ${severityColors[problem.severity] || 'bg-gray-50 border-gray-200'}`}
+                data-testid={`offer-problem-${idx}`}
               >
                 <div className="flex items-start gap-3">
                   <div className="flex-shrink-0 mt-0.5">
@@ -363,17 +364,20 @@ const OfferPage = () => {
                   </div>
                   <div className="flex-1">
                     <div className="flex items-center gap-2 mb-1">
-                      <span className="text-sm font-bold">{problem.area}</span>
-                      <Badge className={`text-[10px] ${
-                        problem.severity === 'kritisch' ? 'bg-red-200 text-red-800' :
-                        problem.severity === 'hoch' ? 'bg-orange-200 text-orange-800' :
-                        'bg-amber-200 text-amber-800'
-                      }`}>
+                      <span className="text-sm font-bold" data-testid={`offer-problem-area-${idx}`}>{problem.area}</span>
+                      <Badge
+                        className={`text-[10px] ${
+                          problem.severity === 'kritisch' ? 'bg-red-200 text-red-800' :
+                          problem.severity === 'hoch' ? 'bg-orange-200 text-orange-800' :
+                          'bg-amber-200 text-amber-800'
+                        }`}
+                        data-testid={`offer-problem-severity-${idx}`}
+                      >
                         {problem.severity}
                       </Badge>
                     </div>
-                    <p className="text-sm">{problem.text}</p>
-                    <p className="text-xs mt-1 opacity-75 font-medium">{problem.impact}</p>
+                    <p className="text-sm" data-testid={`offer-problem-text-${idx}`}>{problem.text}</p>
+                    <p className="text-xs mt-1 opacity-75 font-medium" data-testid={`offer-problem-impact-${idx}`}>{problem.impact}</p>
                   </div>
                 </div>
               </div>
