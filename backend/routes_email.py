@@ -18,6 +18,9 @@ from pdf_generator import generate_pdf_from_html
 
 logger = logging.getLogger(__name__)
 
+ROOT_DIR = Path(__file__).parent
+load_dotenv(ROOT_DIR / '.env')
+
 router = APIRouter(prefix="/api/email", tags=["email"])
 
 mongo_url = os.environ["MONGO_URL"]
