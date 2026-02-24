@@ -15,6 +15,7 @@ from pathlib import Path
 
 from audit_report_builder import build_report_html
 from pdf_generator import generate_pdf_from_html
+from models import AuditReport
 
 logger = logging.getLogger(__name__)
 
