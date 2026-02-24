@@ -8,7 +8,12 @@ from fastapi import APIRouter, HTTPException
 from motor.motor_asyncio import AsyncIOMotorClient
 from dotenv import load_dotenv
 from pathlib import Path
-from emergentintegrations.llm.chat import LlmChat, UserMessage
+
+try:
+    from emergentintegrations.llm.chat import LlmChat, UserMessage
+except Exception:  # pragma: no cover
+    LlmChat = None
+    UserMessage = None
 
 logger = logging.getLogger(__name__)
 
@@ -39,6 +44,15 @@ async def optimize_email(payload: dict):
     api_key = get_llm_key()
     if not api_key:
         raise HTTPException(status_code=500, detail="LLM ist nicht konfiguriert")
+
+    if LlmChat is None or UserMessage is None:
+        raise HTTPException(
+            status_code=503,
+            detail=(
+                "LLM-Integration ist nicht installiert. "
+                "(Optional dependency 'emergentintegrations' fehlt)."
+            ),
+        )
 
     system_message = (
         "Du bist ein deutscher E-Mail-Copywriter für Marketing-Angebote. "
