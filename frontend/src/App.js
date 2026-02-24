@@ -15,6 +15,7 @@ import Reporting from "./pages/Reporting";
 import Prospecting from "./pages/Prospecting";
 import AuditReportPage from "./pages/AuditReportPage";
 import OfferPage from "./pages/OfferPage";
+import Leads from "./pages/Leads";
 import {
   Sites,
   Reputation,
