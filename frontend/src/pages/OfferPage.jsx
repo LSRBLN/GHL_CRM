@@ -146,6 +146,23 @@ const OfferPage = () => {
   }, [emailModalOpen]);
 
   useEffect(() => {
+    if (!emailModalOpen) return;
+    const contactId = searchParams.get('contact_id');
+    if (!contactId || emailTo) return;
+    const fetchContact = async () => {
+      try {
+        const res = await axios.get(`${API}/contacts/${contactId}`);
+        if (res.data?.email) {
+          setEmailTo(res.data.email);
+        }
+      } catch (err) {
+        console.error('Contact fetch error:', err);
+      }
+    };
+    fetchContact();
+  }, [emailModalOpen, searchParams, emailTo]);
+
+  useEffect(() => {
     if (!selectedTemplateId) return;
     const template = emailTemplates.find((t) => t.id === selectedTemplateId);
     if (template) {
