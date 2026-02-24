@@ -12,6 +12,9 @@ from emergentintegrations.llm.chat import LlmChat, UserMessage
 
 logger = logging.getLogger(__name__)
 
+ROOT_DIR = Path(__file__).parent
+load_dotenv(ROOT_DIR / '.env')
+
 router = APIRouter(prefix="/api/llm", tags=["llm"])
 
 mongo_url = os.environ["MONGO_URL"]
