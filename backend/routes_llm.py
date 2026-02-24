@@ -30,6 +30,8 @@ def get_llm_key() -> str:
 async def optimize_email(payload: dict):
     subject = payload.get("subject", "")
     html = payload.get("html", "")
+    provider = payload.get("provider", "anthropic")
+    model = payload.get("model", "claude-sonnet-4-5-20250929")
 
     if not subject or not html:
         raise HTTPException(status_code=400, detail="Betreff und HTML sind erforderlich")
@@ -46,18 +48,13 @@ async def optimize_email(payload: dict):
 
     user_prompt = (
         "Optimiere folgende E-Mail. Bewahre Fakten und Zahlen. "
-        "Gib als JSON zurück: {'subject': '...', 'html': '...'}
-
-"
-        f"Betreff: {subject}
-
-HTML:
-{html}"
+        "Gib als JSON zurück: {'subject': '...', 'html': '...'}\n\n"
+        f"Betreff: {subject}\n\nHTML:\n{html}"
     )
 
     chat = (
         LlmChat(api_key=api_key, session_id=str(uuid.uuid4()), system_message=system_message)
-        .with_model("anthropic", "claude-sonnet-4-5-20250929")
+        .with_model(provider, model)
     )
 
     response = await chat.send_message(UserMessage(text=user_prompt))
@@ -78,7 +75,8 @@ HTML:
             "input": {"subject": subject, "html": html},
             "output": {"subject": optimized_subject, "html": optimized_html},
             "created_at": datetime.utcnow(),
-            "model": "claude-sonnet-4-5-20250929",
+            "model": model,
+            "provider": provider,
         }
     )
 
