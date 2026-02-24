@@ -27,7 +27,7 @@ const navItems = [
   { icon: Crosshair, label: 'Ausschau halten', path: '/prospecting' },
   { icon: MessageSquare, label: 'Conversations', path: '/conversations' },
   { icon: CalendarDays, label: 'Calendars', path: '/calendars' },
-  { icon: Users, label: 'Contacts', path: '/contacts' },
+  { icon: Users, label: 'Leads', path: '/leads' },
   { icon: TrendingUp, label: 'Opportunities', path: '/opportunities' },
   { icon: CreditCard, label: 'Payments', path: '/payments' },
   { icon: Mail, label: 'Marketing', path: '/marketing' },
