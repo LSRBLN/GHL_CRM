@@ -30,7 +30,6 @@ import {
   TableHeader,
   TableRow,
 } from '../components/ui/table';
-import { Textarea } from '../components/ui/textarea';
 
 const API = `${process.env.REACT_APP_BACKEND_URL}/api`;
 
