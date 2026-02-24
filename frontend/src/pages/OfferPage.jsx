@@ -317,8 +317,8 @@ const OfferPage = () => {
               <span className="text-white font-bold text-xs">PV</span>
             </div>
             <div>
-              <p className="text-sm font-semibold text-gray-900">{offer.agency_name}</p>
-              <p className="text-xs text-gray-500">{offer.agency_email}</p>
+              <p className="text-sm font-semibold text-gray-900" data-testid="offer-agency-name">{offer.agency_name}</p>
+              <p className="text-xs text-gray-500" data-testid="offer-agency-email">{offer.agency_email}</p>
             </div>
           </div>
           <div className="text-right">
