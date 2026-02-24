@@ -257,13 +257,21 @@ const OfferPage = () => {
           Zurück
         </Button>
         <div className="flex items-center gap-2">
-          <Button variant="outline" size="sm" className="gap-1.5">
+          <Button
+            size="sm"
+            className="gap-1.5 bg-green-600 hover:bg-green-700 text-white"
+            onClick={() => setEmailModalOpen(true)}
+            data-testid="offer-email-open-button"
+          >
+            <Send size={14} /> Angebot per E-Mail senden
+          </Button>
+          <Button variant="outline" size="sm" className="gap-1.5" data-testid="offer-print-button">
             <Printer size={14} /> Drucken
           </Button>
-          <Button variant="outline" size="sm" className="gap-1.5">
+          <Button variant="outline" size="sm" className="gap-1.5" data-testid="offer-share-button">
             <Share2 size={14} /> Teilen
           </Button>
-          <Button size="sm" className="gap-1.5 bg-blue-600 hover:bg-blue-700">
+          <Button size="sm" className="gap-1.5 bg-blue-600 hover:bg-blue-700" data-testid="offer-download-button">
             <Download size={14} /> PDF Download
           </Button>
         </div>
