@@ -17,6 +17,7 @@ from audit_report_builder import (
     detect_chat_widget,
     parse_review_response_rate,
     calculate_contact_score,
+    build_website_performance,
 )
 from models import SEOAnalysis
 
