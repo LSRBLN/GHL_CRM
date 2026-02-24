@@ -528,6 +528,149 @@ const OfferPage = () => {
           </p>
         </CardContent>
       </Card>
+
+      <Dialog open={emailModalOpen} onOpenChange={setEmailModalOpen}>
+        <DialogContent className="max-w-3xl" data-testid="offer-email-modal">
+          <DialogHeader>
+            <DialogTitle>Angebot per E-Mail senden</DialogTitle>
+          </DialogHeader>
+          <div className="space-y-4">
+            <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
+              <div className="space-y-1">
+                <label className="text-sm font-medium text-gray-700">Betreff</label>
+                <Input
+                  value={emailSubject}
+                  onChange={(e) => setEmailSubject(e.target.value)}
+                  placeholder="Betreff eingeben"
+                  data-testid="offer-email-subject-input"
+                />
+              </div>
+              <div className="space-y-1">
+                <label className="text-sm font-medium text-gray-700">An</label>
+                <Input
+                  value={emailTo}
+                  onChange={(e) => setEmailTo(e.target.value)}
+                  placeholder="kunde@beispiel.de"
+                  data-testid="offer-email-to-input"
+                />
+              </div>
+            </div>
+
+            <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
+              <div className="space-y-1">
+                <label className="text-sm font-medium text-gray-700">Vorlage</label>
+                <Select value={selectedTemplateId} onValueChange={setSelectedTemplateId}>
+                  <SelectTrigger data-testid="offer-email-template-select">
+                    <SelectValue placeholder="Vorlage wählen" />
+                  </SelectTrigger>
+                  <SelectContent>
+                    {emailTemplates.map((template) => (
+                      <SelectItem key={template.id} value={template.id}>
+                        {template.name}
+                      </SelectItem>
+                    ))}
+                  </SelectContent>
+                </Select>
+              </div>
+              <div className="flex items-end gap-2">
+                <div>
+                  <Button
+                    variant="outline"
+                    className="gap-1.5"
+                    onClick={() => fileInputRef.current?.click()}
+                    disabled={uploadingTemplate}
+                    data-testid="offer-email-template-upload-button"
+                  >
+                    {uploadingTemplate ? (
+                      <Loader2 size={14} className="animate-spin" />
+                    ) : (
+                      <Upload size={14} />
+                    )}
+                    Neues Template hochladen
+                  </Button>
+                  <input
+                    ref={fileInputRef}
+                    type="file"
+                    accept=".json,.html"
+                    className="hidden"
+                    onChange={handleTemplateUpload}
+                    data-testid="offer-email-template-file-input"
+                  />
+                </div>
+                <Button
+                  variant="outline"
+                  className="gap-1.5"
+                  onClick={handleOptimizeEmail}
+                  disabled={optimizingEmail}
+                  data-testid="offer-email-optimize-button"
+                >
+                  {optimizingEmail ? (
+                    <Loader2 size={14} className="animate-spin" />
+                  ) : (
+                    <Sparkles size={14} />
+                  )}
+                  Mit KI optimieren
+                </Button>
+              </div>
+            </div>
+
+            <div className="space-y-1">
+              <label className="text-sm font-medium text-gray-700">HTML Inhalt</label>
+              <Textarea
+                rows={6}
+                value={emailHtml}
+                onChange={(e) => setEmailHtml(e.target.value)}
+                placeholder="HTML Inhalt einfügen"
+                data-testid="offer-email-html-input"
+              />
+            </div>
+
+            <div className="space-y-1">
+              <label className="text-sm font-medium text-gray-700">Live HTML Vorschau</label>
+              <div
+                className="border border-gray-200 rounded-lg p-3 min-h-[120px] bg-white"
+                data-testid="offer-email-html-preview"
+                dangerouslySetInnerHTML={{ __html: emailHtml }}
+              />
+            </div>
+
+            <div className="flex items-center gap-2">
+              <Checkbox
+                checked={attachPdf}
+                onCheckedChange={(value) => setAttachPdf(Boolean(value))}
+                data-testid="offer-email-attach-pdf-checkbox"
+              />
+              <span className="text-sm text-gray-700">Audit-Bericht als echtes PDF anhängen</span>
+            </div>
+
+            {emailError && (
+              <div className="text-sm text-red-600 bg-red-50 border border-red-200 rounded-lg px-3 py-2" data-testid="offer-email-error">
+                {emailError}
+              </div>
+            )}
+            {emailSuccess && (
+              <div className="text-sm text-green-600 bg-green-50 border border-green-200 rounded-lg px-3 py-2" data-testid="offer-email-success">
+                {emailSuccess}
+              </div>
+            )}
+          </div>
+          <DialogFooter>
+            <Button
+              onClick={handleSendEmail}
+              className="bg-green-600 hover:bg-green-700 gap-1.5"
+              disabled={sendingEmail}
+              data-testid="offer-email-send-button"
+            >
+              {sendingEmail ? (
+                <Loader2 size={14} className="animate-spin" />
+              ) : (
+                <Send size={14} />
+              )}
+              Angebot senden
+            </Button>
+          </DialogFooter>
+        </DialogContent>
+      </Dialog>
     </div>
   );
 };
