@@ -8,9 +8,6 @@ import {
   Download,
   ChevronLeft,
   ChevronRight,
-  Mail,
-  Phone,
-  MapPin,
   Tag,
 } from 'lucide-react';
 import { Card, CardContent, CardHeader, CardTitle } from '../components/ui/card';
